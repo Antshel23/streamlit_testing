@@ -153,13 +153,23 @@ class FootballDashboard:
     
     def get_base64_image(self, image_path):
         """Convert image to base64 string for embedding in HTML"""
+        import os
         try:
-            with open(f'/Users/as/Personal projects/yeovil/{image_path}', 'rb') as img_file:
-                img_bytes = img_file.read()
-                img_b64 = base64.b64encode(img_bytes).decode()
-                return img_b64
-        except FileNotFoundError:
-            return ""
+            # Try current directory first (for deployment)
+            if os.path.exists(image_path):
+                with open(image_path, 'rb') as img_file:
+                    img_bytes = img_file.read()
+                    img_b64 = base64.b64encode(img_bytes).decode()
+                    return img_b64
+            # Fallback to local path
+            elif os.path.exists(f'/Users/as/Personal projects/yeovil/{image_path}'):
+                with open(f'/Users/as/Personal projects/yeovil/{image_path}', 'rb') as img_file:
+                    img_bytes = img_file.read()
+                    img_b64 = base64.b64encode(img_bytes).decode()
+                    return img_b64
+        except Exception as e:
+            st.warning(f"Could not load image: {e}")
+        return ""
     
     def get_team_data(self, team_name):
         """Get data for a specific team"""
@@ -337,9 +347,7 @@ class FootballDashboard:
             ),
             yaxis=dict(
                 showgrid=False,
-                tickfont=dict(color='white', size=10),
-                categoryorder='array',
-                categoryarray=names
+                tickfont=dict(color='white', size=10)
             ),
             showlegend=False,
             bargap=0.3
@@ -388,11 +396,14 @@ class FootballDashboard:
                     justify-content: center; 
                     gap: 20px;
                 '>
-                    <img src="data:image/png;base64,{}" style="height: 150px; width: auto;">
+                    {}
                     Opposition Research
                 </h1>
             </div>
-            """.format(self.get_base64_image("yeovil.png")), unsafe_allow_html=True)
+            """.format(
+                f'<img src="data:image/png;base64,{self.get_base64_image("yeovil.png")}" style="height: 150px; width: auto;">' 
+                if self.get_base64_image("yeovil.png") else '⚽'
+            ), unsafe_allow_html=True)
         
         # Team selector
         selected_team = st.selectbox(
