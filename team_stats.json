@@ -1,0 +1,2260 @@
+{
+  "teams": [
+    {
+      "team": "Aldershot Town",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 54.2245,
+          "percentile": 70.83333333333333
+        },
+        "Long pass %": {
+          "value": 15.648,
+          "percentile": 54.166666666666664
+        },
+        "Losses low %": {
+          "value": 15.94868170225205,
+          "percentile": 83.33333333333333
+        },
+        "Progressive pass success %": {
+          "value": 72.001,
+          "percentile": 75.0
+        },
+        "Final third pass success %": {
+          "value": 62.63349999999999,
+          "percentile": 79.16666666666667
+        },
+        "Final third entries": {
+          "value": 2898.3,
+          "percentile": 91.66666666666667
+        },
+        "xG": {
+          "value": 1.671,
+          "percentile": 70.83333333333333
+        },
+        "Box entry via cross": {
+          "value": 10.9,
+          "percentile": 75.0
+        },
+        "Box entry via run": {
+          "value": 3.95,
+          "percentile": 45.833333333333336
+        },
+        "Deep completed passes": {
+          "value": 6.9,
+          "percentile": 62.5
+        },
+        "Total counterattacks": {
+          "value": 0.35,
+          "percentile": 29.166666666666668
+        },
+        "Set piece shot %": {
+          "value": 15.535,
+          "percentile": 66.66666666666667
+        },
+        "PPDA": {
+          "value": 9.4825,
+          "percentile": 75.0
+        },
+        "Oppo Progressive pass success %": {
+          "value": 69.7115,
+          "percentile": 50.0
+        },
+        "Recoveries high %": {
+          "value": 14.703195332596326,
+          "percentile": 62.5
+        },
+        "Recoveries med %": {
+          "value": 38.406060783227346,
+          "percentile": 54.166666666666664
+        },
+        "Oppo Total counterattacks": {
+          "value": 1.0,
+          "percentile": 0.0
+        },
+        "Oppo xG": {
+          "value": 1.984,
+          "percentile": 8.333333333333334
+        },
+        "Oppo Final third pass success %": {
+          "value": 55.187,
+          "percentile": 70.83333333333333
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.019317493187716,
+          "percentile": 12.5
+        },
+        "Aerial duel success %": {
+          "value": 45.485499999999995,
+          "percentile": 50.0
+        },
+        "Oppo set piece shot %": {
+          "value": 18.457,
+          "percentile": 4.166666666666667
+        }
+      }
+    },
+    {
+      "team": "Altrincham",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 53.88349999999999,
+          "percentile": 66.66666666666667
+        },
+        "Long pass %": {
+          "value": 14.817999999999998,
+          "percentile": 37.5
+        },
+        "Losses low %": {
+          "value": 18.958010903022576,
+          "percentile": 37.5
+        },
+        "Progressive pass success %": {
+          "value": 68.35749999999999,
+          "percentile": 41.666666666666664
+        },
+        "Final third pass success %": {
+          "value": 58.536500000000004,
+          "percentile": 45.833333333333336
+        },
+        "Final third entries": {
+          "value": 2178.05,
+          "percentile": 62.5
+        },
+        "xG": {
+          "value": 1.512,
+          "percentile": 54.166666666666664
+        },
+        "Box entry via cross": {
+          "value": 10.35,
+          "percentile": 70.83333333333333
+        },
+        "Box entry via run": {
+          "value": 3.85,
+          "percentile": 41.666666666666664
+        },
+        "Deep completed passes": {
+          "value": 6.85,
+          "percentile": 58.333333333333336
+        },
+        "Total counterattacks": {
+          "value": 0.8,
+          "percentile": 70.83333333333333
+        },
+        "Set piece shot %": {
+          "value": 16.290000000000003,
+          "percentile": 75.0
+        },
+        "PPDA": {
+          "value": 11.397499999999997,
+          "percentile": 37.5
+        },
+        "Oppo Progressive pass success %": {
+          "value": 69.933,
+          "percentile": 45.833333333333336
+        },
+        "Recoveries high %": {
+          "value": 14.233019178346108,
+          "percentile": 41.666666666666664
+        },
+        "Recoveries med %": {
+          "value": 38.411127646581335,
+          "percentile": 58.333333333333336
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.4,
+          "percentile": 54.166666666666664
+        },
+        "Oppo xG": {
+          "value": 1.291,
+          "percentile": 75.0
+        },
+        "Oppo Final third pass success %": {
+          "value": 57.24549999999999,
+          "percentile": 62.5
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.01824195352067479,
+          "percentile": 37.5
+        },
+        "Aerial duel success %": {
+          "value": 46.722500000000004,
+          "percentile": 66.66666666666667
+        },
+        "Oppo set piece shot %": {
+          "value": 12.891499999999999,
+          "percentile": 62.5
+        }
+      }
+    },
+    {
+      "team": "Boreham Wood",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 56.2125,
+          "percentile": 83.33333333333333
+        },
+        "Long pass %": {
+          "value": 12.034,
+          "percentile": 20.833333333333332
+        },
+        "Losses low %": {
+          "value": 17.412248784272133,
+          "percentile": 66.66666666666667
+        },
+        "Progressive pass success %": {
+          "value": 73.2255,
+          "percentile": 83.33333333333333
+        },
+        "Final third pass success %": {
+          "value": 61.61500000000001,
+          "percentile": 66.66666666666667
+        },
+        "Final third entries": {
+          "value": 2456.0,
+          "percentile": 75.0
+        },
+        "xG": {
+          "value": 1.814,
+          "percentile": 79.16666666666667
+        },
+        "Box entry via cross": {
+          "value": 9.25,
+          "percentile": 33.333333333333336
+        },
+        "Box entry via run": {
+          "value": 7.3,
+          "percentile": 95.83333333333333
+        },
+        "Deep completed passes": {
+          "value": 13.5,
+          "percentile": 95.83333333333333
+        },
+        "Total counterattacks": {
+          "value": 0.25,
+          "percentile": 12.5
+        },
+        "Set piece shot %": {
+          "value": 13.469000000000003,
+          "percentile": 50.0
+        },
+        "PPDA": {
+          "value": 11.12,
+          "percentile": 41.666666666666664
+        },
+        "Oppo Progressive pass success %": {
+          "value": 69.9735,
+          "percentile": 41.666666666666664
+        },
+        "Recoveries high %": {
+          "value": 16.042784340958598,
+          "percentile": 70.83333333333333
+        },
+        "Recoveries med %": {
+          "value": 35.27546396958202,
+          "percentile": 12.5
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.5,
+          "percentile": 45.833333333333336
+        },
+        "Oppo xG": {
+          "value": 1.0879999999999999,
+          "percentile": 87.5
+        },
+        "Oppo Final third pass success %": {
+          "value": 59.87549999999999,
+          "percentile": 45.833333333333336
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.016138730823672582,
+          "percentile": 62.5
+        },
+        "Aerial duel success %": {
+          "value": 51.829499999999996,
+          "percentile": 95.83333333333333
+        },
+        "Oppo set piece shot %": {
+          "value": 11.777000000000001,
+          "percentile": 75.0
+        }
+      }
+    },
+    {
+      "team": "Brackley Town",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 43.61149999999999,
+          "percentile": 12.5
+        },
+        "Long pass %": {
+          "value": 17.899,
+          "percentile": 70.83333333333333
+        },
+        "Losses low %": {
+          "value": 21.447131513680226,
+          "percentile": 8.333333333333334
+        },
+        "Progressive pass success %": {
+          "value": 70.8505,
+          "percentile": 54.166666666666664
+        },
+        "Final third pass success %": {
+          "value": 60.12549999999999,
+          "percentile": 62.5
+        },
+        "Final third entries": {
+          "value": 1426.15,
+          "percentile": 12.5
+        },
+        "xG": {
+          "value": 1.258,
+          "percentile": 16.666666666666668
+        },
+        "Box entry via cross": {
+          "value": 9.9,
+          "percentile": 62.5
+        },
+        "Box entry via run": {
+          "value": 2.95,
+          "percentile": 16.666666666666668
+        },
+        "Deep completed passes": {
+          "value": 3.95,
+          "percentile": 4.166666666666667
+        },
+        "Total counterattacks": {
+          "value": 0.2,
+          "percentile": 0.0
+        },
+        "Set piece shot %": {
+          "value": 13.3295,
+          "percentile": 45.833333333333336
+        },
+        "PPDA": {
+          "value": 13.642499999999998,
+          "percentile": 16.666666666666668
+        },
+        "Oppo Progressive pass success %": {
+          "value": 76.32199999999999,
+          "percentile": 0.0
+        },
+        "Recoveries high %": {
+          "value": 13.635950391635527,
+          "percentile": 20.833333333333332
+        },
+        "Recoveries med %": {
+          "value": 33.276122256037084,
+          "percentile": 0.0
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.9,
+          "percentile": 12.5
+        },
+        "Oppo xG": {
+          "value": 1.3370000000000002,
+          "percentile": 66.66666666666667
+        },
+        "Oppo Final third pass success %": {
+          "value": 66.09749999999998,
+          "percentile": 0.0
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.014860630191001778,
+          "percentile": 83.33333333333333
+        },
+        "Aerial duel success %": {
+          "value": 48.425,
+          "percentile": 79.16666666666667
+        },
+        "Oppo set piece shot %": {
+          "value": 13.532,
+          "percentile": 45.833333333333336
+        }
+      }
+    },
+    {
+      "team": "Braintree Town",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 49.64549999999999,
+          "percentile": 45.833333333333336
+        },
+        "Long pass %": {
+          "value": 17.437,
+          "percentile": 62.5
+        },
+        "Losses low %": {
+          "value": 18.810127391590477,
+          "percentile": 41.666666666666664
+        },
+        "Progressive pass success %": {
+          "value": 68.3325,
+          "percentile": 33.333333333333336
+        },
+        "Final third pass success %": {
+          "value": 58.06449999999999,
+          "percentile": 33.333333333333336
+        },
+        "Final third entries": {
+          "value": 1925.5,
+          "percentile": 41.666666666666664
+        },
+        "xG": {
+          "value": 1.3239999999999998,
+          "percentile": 33.333333333333336
+        },
+        "Box entry via cross": {
+          "value": 9.25,
+          "percentile": 33.333333333333336
+        },
+        "Box entry via run": {
+          "value": 5.05,
+          "percentile": 75.0
+        },
+        "Deep completed passes": {
+          "value": 6.0,
+          "percentile": 41.666666666666664
+        },
+        "Total counterattacks": {
+          "value": 0.85,
+          "percentile": 79.16666666666667
+        },
+        "Set piece shot %": {
+          "value": 13.785999999999998,
+          "percentile": 54.166666666666664
+        },
+        "PPDA": {
+          "value": 9.282,
+          "percentile": 79.16666666666667
+        },
+        "Oppo Progressive pass success %": {
+          "value": 72.65199999999999,
+          "percentile": 29.166666666666668
+        },
+        "Recoveries high %": {
+          "value": 14.644745679197353,
+          "percentile": 54.166666666666664
+        },
+        "Recoveries med %": {
+          "value": 36.667152718752796,
+          "percentile": 20.833333333333332
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.95,
+          "percentile": 4.166666666666667
+        },
+        "Oppo xG": {
+          "value": 1.8680000000000003,
+          "percentile": 12.5
+        },
+        "Oppo Final third pass success %": {
+          "value": 61.927,
+          "percentile": 29.166666666666668
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.01793819854122298,
+          "percentile": 41.666666666666664
+        },
+        "Aerial duel success %": {
+          "value": 44.5525,
+          "percentile": 37.5
+        },
+        "Oppo set piece shot %": {
+          "value": 16.930000000000003,
+          "percentile": 8.333333333333334
+        }
+      }
+    },
+    {
+      "team": "Eastleigh",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 39.18526315789474,
+          "percentile": 4.166666666666667
+        },
+        "Long pass %": {
+          "value": 20.71736842105263,
+          "percentile": 91.66666666666667
+        },
+        "Losses low %": {
+          "value": 21.24591459125736,
+          "percentile": 16.666666666666668
+        },
+        "Progressive pass success %": {
+          "value": 61.63473684210526,
+          "percentile": 0.0
+        },
+        "Final third pass success %": {
+          "value": 46.46473684210527,
+          "percentile": 0.0
+        },
+        "Final third entries": {
+          "value": 1096.842105263158,
+          "percentile": 0.0
+        },
+        "xG": {
+          "value": 1.1505263157894738,
+          "percentile": 4.166666666666667
+        },
+        "Box entry via cross": {
+          "value": 7.052631578947368,
+          "percentile": 8.333333333333334
+        },
+        "Box entry via run": {
+          "value": 2.6315789473684212,
+          "percentile": 4.166666666666667
+        },
+        "Deep completed passes": {
+          "value": 4.052631578947368,
+          "percentile": 12.5
+        },
+        "Total counterattacks": {
+          "value": 0.47368421052631576,
+          "percentile": 45.833333333333336
+        },
+        "Set piece shot %": {
+          "value": 9.784736842105264,
+          "percentile": 4.166666666666667
+        },
+        "PPDA": {
+          "value": 14.094736842105263,
+          "percentile": 4.166666666666667
+        },
+        "Oppo Progressive pass success %": {
+          "value": 73.2163157894737,
+          "percentile": 16.666666666666668
+        },
+        "Recoveries high %": {
+          "value": 12.012814587621577,
+          "percentile": 12.5
+        },
+        "Recoveries med %": {
+          "value": 40.140154837343424,
+          "percentile": 70.83333333333333
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.2631578947368421,
+          "percentile": 87.5
+        },
+        "Oppo xG": {
+          "value": 1.6842105263157894,
+          "percentile": 25.0
+        },
+        "Oppo Final third pass success %": {
+          "value": 64.00210526315789,
+          "percentile": 12.5
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.014641358279296059,
+          "percentile": 87.5
+        },
+        "Aerial duel success %": {
+          "value": 40.44842105263158,
+          "percentile": 4.166666666666667
+        },
+        "Oppo set piece shot %": {
+          "value": 13.17157894736842,
+          "percentile": 58.333333333333336
+        }
+      }
+    },
+    {
+      "team": "Forest Green Rovers",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 53.395,
+          "percentile": 62.5
+        },
+        "Long pass %": {
+          "value": 12.6165,
+          "percentile": 25.0
+        },
+        "Losses low %": {
+          "value": 14.757339224228577,
+          "percentile": 91.66666666666667
+        },
+        "Progressive pass success %": {
+          "value": 72.06649999999999,
+          "percentile": 79.16666666666667
+        },
+        "Final third pass success %": {
+          "value": 61.769499999999994,
+          "percentile": 75.0
+        },
+        "Final third entries": {
+          "value": 2455.65,
+          "percentile": 70.83333333333333
+        },
+        "xG": {
+          "value": 2.0509999999999997,
+          "percentile": 83.33333333333333
+        },
+        "Box entry via cross": {
+          "value": 13.2,
+          "percentile": 87.5
+        },
+        "Box entry via run": {
+          "value": 6.05,
+          "percentile": 91.66666666666667
+        },
+        "Deep completed passes": {
+          "value": 9.6,
+          "percentile": 83.33333333333333
+        },
+        "Total counterattacks": {
+          "value": 0.2,
+          "percentile": 0.0
+        },
+        "Set piece shot %": {
+          "value": 15.955000000000002,
+          "percentile": 70.83333333333333
+        },
+        "PPDA": {
+          "value": 8.61,
+          "percentile": 95.83333333333333
+        },
+        "Oppo Progressive pass success %": {
+          "value": 61.75650000000002,
+          "percentile": 95.83333333333333
+        },
+        "Recoveries high %": {
+          "value": 17.45087821794244,
+          "percentile": 87.5
+        },
+        "Recoveries med %": {
+          "value": 43.19090728636145,
+          "percentile": 87.5
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.3,
+          "percentile": 83.33333333333333
+        },
+        "Oppo xG": {
+          "value": 0.9035,
+          "percentile": 95.83333333333333
+        },
+        "Oppo Final third pass success %": {
+          "value": 57.48549999999999,
+          "percentile": 54.166666666666664
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.018822420843262824,
+          "percentile": 25.0
+        },
+        "Aerial duel success %": {
+          "value": 49.4395,
+          "percentile": 87.5
+        },
+        "Oppo set piece shot %": {
+          "value": 10.481,
+          "percentile": 91.66666666666667
+        }
+      }
+    },
+    {
+      "team": "Halifax Town",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 48.383,
+          "percentile": 37.5
+        },
+        "Long pass %": {
+          "value": 14.286500000000004,
+          "percentile": 33.333333333333336
+        },
+        "Losses low %": {
+          "value": 20.260741484063384,
+          "percentile": 29.166666666666668
+        },
+        "Progressive pass success %": {
+          "value": 71.48749999999998,
+          "percentile": 66.66666666666667
+        },
+        "Final third pass success %": {
+          "value": 63.503,
+          "percentile": 87.5
+        },
+        "Final third entries": {
+          "value": 2159.65,
+          "percentile": 58.333333333333336
+        },
+        "xG": {
+          "value": 1.5580000000000003,
+          "percentile": 58.333333333333336
+        },
+        "Box entry via cross": {
+          "value": 11.25,
+          "percentile": 83.33333333333333
+        },
+        "Box entry via run": {
+          "value": 3.5,
+          "percentile": 25.0
+        },
+        "Deep completed passes": {
+          "value": 4.75,
+          "percentile": 16.666666666666668
+        },
+        "Total counterattacks": {
+          "value": 0.95,
+          "percentile": 95.83333333333333
+        },
+        "Set piece shot %": {
+          "value": 11.176,
+          "percentile": 12.5
+        },
+        "PPDA": {
+          "value": 12.849,
+          "percentile": 25.0
+        },
+        "Oppo Progressive pass success %": {
+          "value": 73.702,
+          "percentile": 12.5
+        },
+        "Recoveries high %": {
+          "value": 13.637580594676459,
+          "percentile": 25.0
+        },
+        "Recoveries med %": {
+          "value": 38.10787324266367,
+          "percentile": 45.833333333333336
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.75,
+          "percentile": 20.833333333333332
+        },
+        "Oppo xG": {
+          "value": 1.426,
+          "percentile": 62.5
+        },
+        "Oppo Final third pass success %": {
+          "value": 65.12800000000001,
+          "percentile": 4.166666666666667
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.013974805955072592,
+          "percentile": 91.66666666666667
+        },
+        "Aerial duel success %": {
+          "value": 45.474,
+          "percentile": 45.833333333333336
+        },
+        "Oppo set piece shot %": {
+          "value": 14.6815,
+          "percentile": 29.166666666666668
+        }
+      }
+    },
+    {
+      "team": "Hartlepool United",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 46.7815,
+          "percentile": 33.333333333333336
+        },
+        "Long pass %": {
+          "value": 15.2945,
+          "percentile": 45.833333333333336
+        },
+        "Losses low %": {
+          "value": 20.38135964682175,
+          "percentile": 25.0
+        },
+        "Progressive pass success %": {
+          "value": 67.64399999999999,
+          "percentile": 25.0
+        },
+        "Final third pass success %": {
+          "value": 58.935500000000005,
+          "percentile": 50.0
+        },
+        "Final third entries": {
+          "value": 1724.0,
+          "percentile": 25.0
+        },
+        "xG": {
+          "value": 1.276,
+          "percentile": 25.0
+        },
+        "Box entry via cross": {
+          "value": 9.65,
+          "percentile": 50.0
+        },
+        "Box entry via run": {
+          "value": 4.0,
+          "percentile": 50.0
+        },
+        "Deep completed passes": {
+          "value": 5.6,
+          "percentile": 29.166666666666668
+        },
+        "Total counterattacks": {
+          "value": 0.45,
+          "percentile": 37.5
+        },
+        "Set piece shot %": {
+          "value": 16.926,
+          "percentile": 79.16666666666667
+        },
+        "PPDA": {
+          "value": 10.4565,
+          "percentile": 58.333333333333336
+        },
+        "Oppo Progressive pass success %": {
+          "value": 67.14649999999999,
+          "percentile": 62.5
+        },
+        "Recoveries high %": {
+          "value": 13.682049086037058,
+          "percentile": 29.166666666666668
+        },
+        "Recoveries med %": {
+          "value": 38.45287193030922,
+          "percentile": 62.5
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.35,
+          "percentile": 66.66666666666667
+        },
+        "Oppo xG": {
+          "value": 1.5750000000000002,
+          "percentile": 41.666666666666664
+        },
+        "Oppo Final third pass success %": {
+          "value": 60.6625,
+          "percentile": 41.666666666666664
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.01862292538768471,
+          "percentile": 29.166666666666668
+        },
+        "Aerial duel success %": {
+          "value": 40.3175,
+          "percentile": 0.0
+        },
+        "Oppo set piece shot %": {
+          "value": 14.323999999999998,
+          "percentile": 33.333333333333336
+        }
+      }
+    },
+    {
+      "team": "Rochdale",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 58.43444444444445,
+          "percentile": 87.5
+        },
+        "Long pass %": {
+          "value": 9.79277777777778,
+          "percentile": 4.166666666666667
+        },
+        "Losses low %": {
+          "value": 21.42449975140212,
+          "percentile": 12.5
+        },
+        "Progressive pass success %": {
+          "value": 75.58111111111113,
+          "percentile": 95.83333333333333
+        },
+        "Final third pass success %": {
+          "value": 69.58055555555558,
+          "percentile": 95.83333333333333
+        },
+        "Final third entries": {
+          "value": 3205.0,
+          "percentile": 95.83333333333333
+        },
+        "xG": {
+          "value": 2.1727777777777777,
+          "percentile": 91.66666666666667
+        },
+        "Box entry via cross": {
+          "value": 7.777777777777778,
+          "percentile": 16.666666666666668
+        },
+        "Box entry via run": {
+          "value": 4.833333333333333,
+          "percentile": 70.83333333333333
+        },
+        "Deep completed passes": {
+          "value": 12.444444444444445,
+          "percentile": 91.66666666666667
+        },
+        "Total counterattacks": {
+          "value": 0.4444444444444444,
+          "percentile": 33.333333333333336
+        },
+        "Set piece shot %": {
+          "value": 18.572777777777777,
+          "percentile": 91.66666666666667
+        },
+        "PPDA": {
+          "value": 11.907222222222224,
+          "percentile": 29.166666666666668
+        },
+        "Oppo Progressive pass success %": {
+          "value": 65.41555555555554,
+          "percentile": 83.33333333333333
+        },
+        "Recoveries high %": {
+          "value": 16.28141947291942,
+          "percentile": 75.0
+        },
+        "Recoveries med %": {
+          "value": 34.010892423850926,
+          "percentile": 4.166666666666667
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.3888888888888889,
+          "percentile": 62.5
+        },
+        "Oppo xG": {
+          "value": 1.066111111111111,
+          "percentile": 91.66666666666667
+        },
+        "Oppo Final third pass success %": {
+          "value": 52.31888888888889,
+          "percentile": 91.66666666666667
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.01760333691470408,
+          "percentile": 54.166666666666664
+        },
+        "Aerial duel success %": {
+          "value": 49.03277777777778,
+          "percentile": 83.33333333333333
+        },
+        "Oppo set piece shot %": {
+          "value": 9.846666666666668,
+          "percentile": 95.83333333333333
+        }
+      }
+    },
+    {
+      "team": "Scunthorpe United",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 46.165,
+          "percentile": 29.166666666666668
+        },
+        "Long pass %": {
+          "value": 20.3375,
+          "percentile": 83.33333333333333
+        },
+        "Losses low %": {
+          "value": 16.471377852032766,
+          "percentile": 79.16666666666667
+        },
+        "Progressive pass success %": {
+          "value": 70.886875,
+          "percentile": 58.333333333333336
+        },
+        "Final third pass success %": {
+          "value": 55.05,
+          "percentile": 16.666666666666668
+        },
+        "Final third entries": {
+          "value": 2462.375,
+          "percentile": 79.16666666666667
+        },
+        "xG": {
+          "value": 1.6637499999999998,
+          "percentile": 66.66666666666667
+        },
+        "Box entry via cross": {
+          "value": 8.25,
+          "percentile": 20.833333333333332
+        },
+        "Box entry via run": {
+          "value": 4.8125,
+          "percentile": 66.66666666666667
+        },
+        "Deep completed passes": {
+          "value": 7.6875,
+          "percentile": 75.0
+        },
+        "Total counterattacks": {
+          "value": 0.3125,
+          "percentile": 25.0
+        },
+        "Set piece shot %": {
+          "value": 11.428125000000001,
+          "percentile": 16.666666666666668
+        },
+        "PPDA": {
+          "value": 10.407499999999999,
+          "percentile": 62.5
+        },
+        "Oppo Progressive pass success %": {
+          "value": 66.695,
+          "percentile": 70.83333333333333
+        },
+        "Recoveries high %": {
+          "value": 13.943137126436286,
+          "percentile": 33.333333333333336
+        },
+        "Recoveries med %": {
+          "value": 43.59425352211023,
+          "percentile": 91.66666666666667
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.6875,
+          "percentile": 25.0
+        },
+        "Oppo xG": {
+          "value": 1.621875,
+          "percentile": 33.333333333333336
+        },
+        "Oppo Final third pass success %": {
+          "value": 57.8125,
+          "percentile": 50.0
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.015557027281313413,
+          "percentile": 66.66666666666667
+        },
+        "Aerial duel success %": {
+          "value": 42.973749999999995,
+          "percentile": 20.833333333333332
+        },
+        "Oppo set piece shot %": {
+          "value": 13.4025,
+          "percentile": 54.166666666666664
+        }
+      }
+    },
+    {
+      "team": "Solihull Moors",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 45.676,
+          "percentile": 25.0
+        },
+        "Long pass %": {
+          "value": 16.006999999999998,
+          "percentile": 58.333333333333336
+        },
+        "Losses low %": {
+          "value": 20.93677759013131,
+          "percentile": 20.833333333333332
+        },
+        "Progressive pass success %": {
+          "value": 66.3735,
+          "percentile": 12.5
+        },
+        "Final third pass success %": {
+          "value": 59.966999999999985,
+          "percentile": 58.333333333333336
+        },
+        "Final third entries": {
+          "value": 1581.75,
+          "percentile": 16.666666666666668
+        },
+        "xG": {
+          "value": 1.4785000000000001,
+          "percentile": 50.0
+        },
+        "Box entry via cross": {
+          "value": 9.35,
+          "percentile": 45.833333333333336
+        },
+        "Box entry via run": {
+          "value": 2.75,
+          "percentile": 12.5
+        },
+        "Deep completed passes": {
+          "value": 4.05,
+          "percentile": 8.333333333333334
+        },
+        "Total counterattacks": {
+          "value": 0.7,
+          "percentile": 66.66666666666667
+        },
+        "Set piece shot %": {
+          "value": 13.174999999999997,
+          "percentile": 41.666666666666664
+        },
+        "PPDA": {
+          "value": 13.713500000000002,
+          "percentile": 12.5
+        },
+        "Oppo Progressive pass success %": {
+          "value": 72.902,
+          "percentile": 25.0
+        },
+        "Recoveries high %": {
+          "value": 14.106636261981038,
+          "percentile": 37.5
+        },
+        "Recoveries med %": {
+          "value": 36.218140017140136,
+          "percentile": 16.666666666666668
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.5,
+          "percentile": 45.833333333333336
+        },
+        "Oppo xG": {
+          "value": 1.6095,
+          "percentile": 37.5
+        },
+        "Oppo Final third pass success %": {
+          "value": 63.29699999999999,
+          "percentile": 20.833333333333332
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.015286354148728188,
+          "percentile": 70.83333333333333
+        },
+        "Aerial duel success %": {
+          "value": 42.542,
+          "percentile": 16.666666666666668
+        },
+        "Oppo set piece shot %": {
+          "value": 14.224500000000003,
+          "percentile": 37.5
+        }
+      }
+    },
+    {
+      "team": "Southend United",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 54.965263157894746,
+          "percentile": 79.16666666666667
+        },
+        "Long pass %": {
+          "value": 11.384736842105264,
+          "percentile": 12.5
+        },
+        "Losses low %": {
+          "value": 15.036646733137545,
+          "percentile": 87.5
+        },
+        "Progressive pass success %": {
+          "value": 75.41526315789473,
+          "percentile": 91.66666666666667
+        },
+        "Final third pass success %": {
+          "value": 63.46,
+          "percentile": 83.33333333333333
+        },
+        "Final third entries": {
+          "value": 2331.0,
+          "percentile": 66.66666666666667
+        },
+        "xG": {
+          "value": 2.0852631578947363,
+          "percentile": 87.5
+        },
+        "Box entry via cross": {
+          "value": 13.631578947368421,
+          "percentile": 91.66666666666667
+        },
+        "Box entry via run": {
+          "value": 5.368421052631579,
+          "percentile": 83.33333333333333
+        },
+        "Deep completed passes": {
+          "value": 8.68421052631579,
+          "percentile": 79.16666666666667
+        },
+        "Total counterattacks": {
+          "value": 0.631578947368421,
+          "percentile": 54.166666666666664
+        },
+        "Set piece shot %": {
+          "value": 18.22578947368421,
+          "percentile": 87.5
+        },
+        "PPDA": {
+          "value": 10.802105263157893,
+          "percentile": 50.0
+        },
+        "Oppo Progressive pass success %": {
+          "value": 65.53421052631579,
+          "percentile": 79.16666666666667
+        },
+        "Recoveries high %": {
+          "value": 15.9379268503639,
+          "percentile": 66.66666666666667
+        },
+        "Recoveries med %": {
+          "value": 41.49553798909428,
+          "percentile": 79.16666666666667
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.2631578947368421,
+          "percentile": 87.5
+        },
+        "Oppo xG": {
+          "value": 1.098421052631579,
+          "percentile": 83.33333333333333
+        },
+        "Oppo Final third pass success %": {
+          "value": 53.293157894736844,
+          "percentile": 87.5
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.018285584718470017,
+          "percentile": 33.333333333333336
+        },
+        "Aerial duel success %": {
+          "value": 46.09421052631579,
+          "percentile": 58.333333333333336
+        },
+        "Oppo set piece shot %": {
+          "value": 11.451052631578946,
+          "percentile": 79.16666666666667
+        }
+      }
+    },
+    {
+      "team": "Tamworth",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 38.89149999999999,
+          "percentile": 0.0
+        },
+        "Long pass %": {
+          "value": 25.7255,
+          "percentile": 95.83333333333333
+        },
+        "Losses low %": {
+          "value": 17.653453170056515,
+          "percentile": 58.333333333333336
+        },
+        "Progressive pass success %": {
+          "value": 68.0495,
+          "percentile": 29.166666666666668
+        },
+        "Final third pass success %": {
+          "value": 53.3845,
+          "percentile": 8.333333333333334
+        },
+        "Final third entries": {
+          "value": 1397.3,
+          "percentile": 4.166666666666667
+        },
+        "xG": {
+          "value": 1.326,
+          "percentile": 41.666666666666664
+        },
+        "Box entry via cross": {
+          "value": 8.35,
+          "percentile": 25.0
+        },
+        "Box entry via run": {
+          "value": 4.3,
+          "percentile": 58.333333333333336
+        },
+        "Deep completed passes": {
+          "value": 5.75,
+          "percentile": 33.333333333333336
+        },
+        "Total counterattacks": {
+          "value": 0.85,
+          "percentile": 79.16666666666667
+        },
+        "Set piece shot %": {
+          "value": 14.413,
+          "percentile": 62.5
+        },
+        "PPDA": {
+          "value": 11.455,
+          "percentile": 33.333333333333336
+        },
+        "Oppo Progressive pass success %": {
+          "value": 70.47749999999999,
+          "percentile": 37.5
+        },
+        "Recoveries high %": {
+          "value": 16.81596603738486,
+          "percentile": 79.16666666666667
+        },
+        "Recoveries med %": {
+          "value": 37.30476882701994,
+          "percentile": 33.333333333333336
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.35,
+          "percentile": 66.66666666666667
+        },
+        "Oppo xG": {
+          "value": 1.5245,
+          "percentile": 54.166666666666664
+        },
+        "Oppo Final third pass success %": {
+          "value": 63.980500000000006,
+          "percentile": 16.666666666666668
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.013791054742371245,
+          "percentile": 95.83333333333333
+        },
+        "Aerial duel success %": {
+          "value": 42.36899999999999,
+          "percentile": 12.5
+        },
+        "Oppo set piece shot %": {
+          "value": 11.3555,
+          "percentile": 83.33333333333333
+        }
+      }
+    },
+    {
+      "team": "Truro City",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 45.140499999999996,
+          "percentile": 20.833333333333332
+        },
+        "Long pass %": {
+          "value": 19.327,
+          "percentile": 79.16666666666667
+        },
+        "Losses low %": {
+          "value": 14.425590516400376,
+          "percentile": 95.83333333333333
+        },
+        "Progressive pass success %": {
+          "value": 71.30749999999999,
+          "percentile": 62.5
+        },
+        "Final third pass success %": {
+          "value": 56.043000000000006,
+          "percentile": 20.833333333333332
+        },
+        "Final third entries": {
+          "value": 2144.75,
+          "percentile": 54.166666666666664
+        },
+        "xG": {
+          "value": 1.067,
+          "percentile": 0.0
+        },
+        "Box entry via cross": {
+          "value": 9.7,
+          "percentile": 58.333333333333336
+        },
+        "Box entry via run": {
+          "value": 2.6,
+          "percentile": 0.0
+        },
+        "Deep completed passes": {
+          "value": 6.45,
+          "percentile": 50.0
+        },
+        "Total counterattacks": {
+          "value": 0.3,
+          "percentile": 16.666666666666668
+        },
+        "Set piece shot %": {
+          "value": 11.735,
+          "percentile": 20.833333333333332
+        },
+        "PPDA": {
+          "value": 9.6325,
+          "percentile": 66.66666666666667
+        },
+        "Oppo Progressive pass success %": {
+          "value": 67.8125,
+          "percentile": 58.333333333333336
+        },
+        "Recoveries high %": {
+          "value": 16.996882131879925,
+          "percentile": 83.33333333333333
+        },
+        "Recoveries med %": {
+          "value": 44.25581662697045,
+          "percentile": 95.83333333333333
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.8,
+          "percentile": 16.666666666666668
+        },
+        "Oppo xG": {
+          "value": 1.4925,
+          "percentile": 58.333333333333336
+        },
+        "Oppo Final third pass success %": {
+          "value": 57.349000000000004,
+          "percentile": 58.333333333333336
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.01885124750048286,
+          "percentile": 20.833333333333332
+        },
+        "Aerial duel success %": {
+          "value": 42.22500000000001,
+          "percentile": 8.333333333333334
+        },
+        "Oppo set piece shot %": {
+          "value": 11.193999999999999,
+          "percentile": 87.5
+        }
+      }
+    },
+    {
+      "team": "Wealdstone",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 58.8657894736842,
+          "percentile": 91.66666666666667
+        },
+        "Long pass %": {
+          "value": 11.72578947368421,
+          "percentile": 16.666666666666668
+        },
+        "Losses low %": {
+          "value": 18.04544080385361,
+          "percentile": 54.166666666666664
+        },
+        "Progressive pass success %": {
+          "value": 71.55,
+          "percentile": 70.83333333333333
+        },
+        "Final third pass success %": {
+          "value": 59.08736842105264,
+          "percentile": 54.166666666666664
+        },
+        "Final third entries": {
+          "value": 1805.2631578947369,
+          "percentile": 33.333333333333336
+        },
+        "xG": {
+          "value": 1.5589473684210524,
+          "percentile": 62.5
+        },
+        "Box entry via cross": {
+          "value": 10.263157894736842,
+          "percentile": 66.66666666666667
+        },
+        "Box entry via run": {
+          "value": 3.789473684210526,
+          "percentile": 33.333333333333336
+        },
+        "Deep completed passes": {
+          "value": 7.578947368421052,
+          "percentile": 70.83333333333333
+        },
+        "Total counterattacks": {
+          "value": 0.6842105263157895,
+          "percentile": 62.5
+        },
+        "Set piece shot %": {
+          "value": 12.85,
+          "percentile": 37.5
+        },
+        "PPDA": {
+          "value": 9.164210526315788,
+          "percentile": 87.5
+        },
+        "Oppo Progressive pass success %": {
+          "value": 63.19736842105263,
+          "percentile": 91.66666666666667
+        },
+        "Recoveries high %": {
+          "value": 18.547798468333767,
+          "percentile": 95.83333333333333
+        },
+        "Recoveries med %": {
+          "value": 37.02701506181952,
+          "percentile": 29.166666666666668
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.5263157894736842,
+          "percentile": 41.666666666666664
+        },
+        "Oppo xG": {
+          "value": 1.5742105263157895,
+          "percentile": 45.833333333333336
+        },
+        "Oppo Final third pass success %": {
+          "value": 53.93052631578948,
+          "percentile": 75.0
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.020116288752609703,
+          "percentile": 8.333333333333334
+        },
+        "Aerial duel success %": {
+          "value": 45.607368421052634,
+          "percentile": 54.166666666666664
+        },
+        "Oppo set piece shot %": {
+          "value": 12.241052631578947,
+          "percentile": 66.66666666666667
+        }
+      }
+    },
+    {
+      "team": "Woking",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 48.852000000000004,
+          "percentile": 41.666666666666664
+        },
+        "Long pass %": {
+          "value": 14.981499999999997,
+          "percentile": 41.666666666666664
+        },
+        "Losses low %": {
+          "value": 19.15473861712509,
+          "percentile": 33.333333333333336
+        },
+        "Progressive pass success %": {
+          "value": 67.2265,
+          "percentile": 20.833333333333332
+        },
+        "Final third pass success %": {
+          "value": 56.244499999999995,
+          "percentile": 25.0
+        },
+        "Final third entries": {
+          "value": 1713.8,
+          "percentile": 20.833333333333332
+        },
+        "xG": {
+          "value": 1.4505000000000003,
+          "percentile": 45.833333333333336
+        },
+        "Box entry via cross": {
+          "value": 8.85,
+          "percentile": 29.166666666666668
+        },
+        "Box entry via run": {
+          "value": 3.55,
+          "percentile": 29.166666666666668
+        },
+        "Deep completed passes": {
+          "value": 4.9,
+          "percentile": 20.833333333333332
+        },
+        "Total counterattacks": {
+          "value": 0.5,
+          "percentile": 50.0
+        },
+        "Set piece shot %": {
+          "value": 11.831999999999997,
+          "percentile": 25.0
+        },
+        "PPDA": {
+          "value": 10.635499999999999,
+          "percentile": 54.166666666666664
+        },
+        "Oppo Progressive pass success %": {
+          "value": 66.9715,
+          "percentile": 66.66666666666667
+        },
+        "Recoveries high %": {
+          "value": 11.776944063125617,
+          "percentile": 8.333333333333334
+        },
+        "Recoveries med %": {
+          "value": 40.117038008922606,
+          "percentile": 66.66666666666667
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.35,
+          "percentile": 66.66666666666667
+        },
+        "Oppo xG": {
+          "value": 1.557,
+          "percentile": 50.0
+        },
+        "Oppo Final third pass success %": {
+          "value": 52.13349999999999,
+          "percentile": 95.83333333333333
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.019313001164422187,
+          "percentile": 16.666666666666668
+        },
+        "Aerial duel success %": {
+          "value": 43.446,
+          "percentile": 25.0
+        },
+        "Oppo set piece shot %": {
+          "value": 15.009499999999997,
+          "percentile": 20.833333333333332
+        }
+      }
+    },
+    {
+      "team": "Yeovil Town",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 43.62263157894737,
+          "percentile": 16.666666666666668
+        },
+        "Long pass %": {
+          "value": 18.057894736842105,
+          "percentile": 75.0
+        },
+        "Losses low %": {
+          "value": 21.921397765977634,
+          "percentile": 0.0
+        },
+        "Progressive pass success %": {
+          "value": 65.8221052631579,
+          "percentile": 8.333333333333334
+        },
+        "Final third pass success %": {
+          "value": 54.58105263157895,
+          "percentile": 12.5
+        },
+        "Final third entries": {
+          "value": 1417.5263157894738,
+          "percentile": 8.333333333333334
+        },
+        "xG": {
+          "value": 1.2826315789473683,
+          "percentile": 29.166666666666668
+        },
+        "Box entry via cross": {
+          "value": 5.157894736842105,
+          "percentile": 0.0
+        },
+        "Box entry via run": {
+          "value": 3.3157894736842106,
+          "percentile": 20.833333333333332
+        },
+        "Deep completed passes": {
+          "value": 3.6315789473684212,
+          "percentile": 0.0
+        },
+        "Total counterattacks": {
+          "value": 0.631578947368421,
+          "percentile": 54.166666666666664
+        },
+        "Set piece shot %": {
+          "value": 12.219473684210525,
+          "percentile": 29.166666666666668
+        },
+        "PPDA": {
+          "value": 13.517368421052634,
+          "percentile": 20.833333333333332
+        },
+        "Oppo Progressive pass success %": {
+          "value": 74.71999999999998,
+          "percentile": 8.333333333333334
+        },
+        "Recoveries high %": {
+          "value": 10.635822898593172,
+          "percentile": 0.0
+        },
+        "Recoveries med %": {
+          "value": 38.316810582063844,
+          "percentile": 50.0
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.2631578947368421,
+          "percentile": 87.5
+        },
+        "Oppo xG": {
+          "value": 1.6331578947368421,
+          "percentile": 29.166666666666668
+        },
+        "Oppo Final third pass success %": {
+          "value": 62.57315789473684,
+          "percentile": 25.0
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.016531057087481583,
+          "percentile": 58.333333333333336
+        },
+        "Aerial duel success %": {
+          "value": 46.308947368421045,
+          "percentile": 62.5
+        },
+        "Oppo set piece shot %": {
+          "value": 14.935263157894738,
+          "percentile": 25.0
+        }
+      }
+    },
+    {
+      "team": "Boston United",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 41.388999999999996,
+          "percentile": 8.333333333333334
+        },
+        "Long pass %": {
+          "value": 20.552500000000002,
+          "percentile": 87.5
+        },
+        "Losses low %": {
+          "value": 18.164154931185756,
+          "percentile": 50.0
+        },
+        "Progressive pass success %": {
+          "value": 66.6385,
+          "percentile": 16.666666666666668
+        },
+        "Final third pass success %": {
+          "value": 52.1745,
+          "percentile": 4.166666666666667
+        },
+        "Final third entries": {
+          "value": 1782.4,
+          "percentile": 29.166666666666668
+        },
+        "xG": {
+          "value": 1.2289999999999999,
+          "percentile": 12.5
+        },
+        "Box entry via cross": {
+          "value": 9.65,
+          "percentile": 50.0
+        },
+        "Box entry via run": {
+          "value": 2.7,
+          "percentile": 8.333333333333334
+        },
+        "Deep completed passes": {
+          "value": 5.2,
+          "percentile": 25.0
+        },
+        "Total counterattacks": {
+          "value": 0.3,
+          "percentile": 16.666666666666668
+        },
+        "Set piece shot %": {
+          "value": 10.947999999999999,
+          "percentile": 8.333333333333334
+        },
+        "PPDA": {
+          "value": 10.832000000000003,
+          "percentile": 45.833333333333336
+        },
+        "Oppo Progressive pass success %": {
+          "value": 69.0315,
+          "percentile": 54.166666666666664
+        },
+        "Recoveries high %": {
+          "value": 13.62107033912136,
+          "percentile": 16.666666666666668
+        },
+        "Recoveries med %": {
+          "value": 42.68319079772702,
+          "percentile": 83.33333333333333
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.35,
+          "percentile": 66.66666666666667
+        },
+        "Oppo xG": {
+          "value": 1.687,
+          "percentile": 20.833333333333332
+        },
+        "Oppo Final third pass success %": {
+          "value": 61.32750000000001,
+          "percentile": 37.5
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.015271784571991225,
+          "percentile": 75.0
+        },
+        "Aerial duel success %": {
+          "value": 43.9205,
+          "percentile": 29.166666666666668
+        },
+        "Oppo set piece shot %": {
+          "value": 14.0185,
+          "percentile": 41.666666666666664
+        }
+      }
+    },
+    {
+      "team": "Braintree",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 49.64549999999999,
+          "percentile": 45.833333333333336
+        },
+        "Long pass %": {
+          "value": 17.437,
+          "percentile": 62.5
+        },
+        "Losses low %": {
+          "value": 18.810127391590477,
+          "percentile": 41.666666666666664
+        },
+        "Progressive pass success %": {
+          "value": 68.3325,
+          "percentile": 33.333333333333336
+        },
+        "Final third pass success %": {
+          "value": 58.06449999999999,
+          "percentile": 33.333333333333336
+        },
+        "Final third entries": {
+          "value": 1925.5,
+          "percentile": 41.666666666666664
+        },
+        "xG": {
+          "value": 1.3239999999999998,
+          "percentile": 33.333333333333336
+        },
+        "Box entry via cross": {
+          "value": 9.25,
+          "percentile": 33.333333333333336
+        },
+        "Box entry via run": {
+          "value": 5.05,
+          "percentile": 75.0
+        },
+        "Deep completed passes": {
+          "value": 6.0,
+          "percentile": 41.666666666666664
+        },
+        "Total counterattacks": {
+          "value": 0.85,
+          "percentile": 79.16666666666667
+        },
+        "Set piece shot %": {
+          "value": 13.785999999999998,
+          "percentile": 54.166666666666664
+        },
+        "PPDA": {
+          "value": 9.282,
+          "percentile": 79.16666666666667
+        },
+        "Oppo Progressive pass success %": {
+          "value": 72.65199999999999,
+          "percentile": 29.166666666666668
+        },
+        "Recoveries high %": {
+          "value": 14.644745679197353,
+          "percentile": 54.166666666666664
+        },
+        "Recoveries med %": {
+          "value": 36.667152718752796,
+          "percentile": 20.833333333333332
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.95,
+          "percentile": 4.166666666666667
+        },
+        "Oppo xG": {
+          "value": 1.8680000000000003,
+          "percentile": 12.5
+        },
+        "Oppo Final third pass success %": {
+          "value": 61.927,
+          "percentile": 29.166666666666668
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.01793819854122298,
+          "percentile": 41.666666666666664
+        },
+        "Aerial duel success %": {
+          "value": 44.5525,
+          "percentile": 37.5
+        },
+        "Oppo set piece shot %": {
+          "value": 16.930000000000003,
+          "percentile": 8.333333333333334
+        }
+      }
+    },
+    {
+      "team": "Carlisle",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 51.466499999999996,
+          "percentile": 54.166666666666664
+        },
+        "Long pass %": {
+          "value": 15.5615,
+          "percentile": 50.0
+        },
+        "Losses low %": {
+          "value": 16.823745146715176,
+          "percentile": 70.83333333333333
+        },
+        "Progressive pass success %": {
+          "value": 69.6215,
+          "percentile": 50.0
+        },
+        "Final third pass success %": {
+          "value": 58.407999999999994,
+          "percentile": 41.666666666666664
+        },
+        "Final third entries": {
+          "value": 2082.7,
+          "percentile": 50.0
+        },
+        "xG": {
+          "value": 1.7700000000000002,
+          "percentile": 75.0
+        },
+        "Box entry via cross": {
+          "value": 11.2,
+          "percentile": 79.16666666666667
+        },
+        "Box entry via run": {
+          "value": 5.75,
+          "percentile": 87.5
+        },
+        "Deep completed passes": {
+          "value": 6.55,
+          "percentile": 54.166666666666664
+        },
+        "Total counterattacks": {
+          "value": 0.8,
+          "percentile": 70.83333333333333
+        },
+        "Set piece shot %": {
+          "value": 17.546,
+          "percentile": 83.33333333333333
+        },
+        "PPDA": {
+          "value": 8.7405,
+          "percentile": 91.66666666666667
+        },
+        "Oppo Progressive pass success %": {
+          "value": 65.8845,
+          "percentile": 75.0
+        },
+        "Recoveries high %": {
+          "value": 14.467822224953093,
+          "percentile": 50.0
+        },
+        "Recoveries med %": {
+          "value": 40.68623604636915,
+          "percentile": 75.0
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.55,
+          "percentile": 33.333333333333336
+        },
+        "Oppo xG": {
+          "value": 1.3039999999999998,
+          "percentile": 70.83333333333333
+        },
+        "Oppo Final third pass success %": {
+          "value": 53.71049999999999,
+          "percentile": 79.16666666666667
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.01776045400387821,
+          "percentile": 50.0
+        },
+        "Aerial duel success %": {
+          "value": 48.147499999999994,
+          "percentile": 70.83333333333333
+        },
+        "Oppo set piece shot %": {
+          "value": 11.863499999999998,
+          "percentile": 70.83333333333333
+        }
+      }
+    },
+    {
+      "team": "Gateshead",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 52.2,
+          "percentile": 58.333333333333336
+        },
+        "Long pass %": {
+          "value": 14.044,
+          "percentile": 29.166666666666668
+        },
+        "Losses low %": {
+          "value": 17.607949636650172,
+          "percentile": 62.5
+        },
+        "Progressive pass success %": {
+          "value": 69.3735,
+          "percentile": 45.833333333333336
+        },
+        "Final third pass success %": {
+          "value": 57.870000000000005,
+          "percentile": 29.166666666666668
+        },
+        "Final third entries": {
+          "value": 2478.95,
+          "percentile": 83.33333333333333
+        },
+        "xG": {
+          "value": 1.1985000000000001,
+          "percentile": 8.333333333333334
+        },
+        "Box entry via cross": {
+          "value": 6.35,
+          "percentile": 4.166666666666667
+        },
+        "Box entry via run": {
+          "value": 4.05,
+          "percentile": 54.166666666666664
+        },
+        "Deep completed passes": {
+          "value": 7.3,
+          "percentile": 66.66666666666667
+        },
+        "Total counterattacks": {
+          "value": 0.85,
+          "percentile": 79.16666666666667
+        },
+        "Set piece shot %": {
+          "value": 9.758499999999998,
+          "percentile": 0.0
+        },
+        "PPDA": {
+          "value": 14.166,
+          "percentile": 0.0
+        },
+        "Oppo Progressive pass success %": {
+          "value": 75.364,
+          "percentile": 4.166666666666667
+        },
+        "Recoveries high %": {
+          "value": 14.34598180816777,
+          "percentile": 45.833333333333336
+        },
+        "Recoveries med %": {
+          "value": 37.435065891644115,
+          "percentile": 37.5
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.55,
+          "percentile": 33.333333333333336
+        },
+        "Oppo xG": {
+          "value": 2.5844999999999994,
+          "percentile": 0.0
+        },
+        "Oppo Final third pass success %": {
+          "value": 64.5005,
+          "percentile": 8.333333333333334
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.014985611983460864,
+          "percentile": 79.16666666666667
+        },
+        "Aerial duel success %": {
+          "value": 44.284,
+          "percentile": 33.333333333333336
+        },
+        "Oppo set piece shot %": {
+          "value": 19.4715,
+          "percentile": 0.0
+        }
+      }
+    },
+    {
+      "team": "Morecambe",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 54.80449999999998,
+          "percentile": 75.0
+        },
+        "Long pass %": {
+          "value": 10.8935,
+          "percentile": 8.333333333333334
+        },
+        "Losses low %": {
+          "value": 21.56584756171807,
+          "percentile": 4.166666666666667
+        },
+        "Progressive pass success %": {
+          "value": 64.8905,
+          "percentile": 4.166666666666667
+        },
+        "Final third pass success %": {
+          "value": 61.68800000000001,
+          "percentile": 70.83333333333333
+        },
+        "Final third entries": {
+          "value": 1898.05,
+          "percentile": 37.5
+        },
+        "xG": {
+          "value": 1.2690000000000001,
+          "percentile": 20.833333333333332
+        },
+        "Box entry via cross": {
+          "value": 7.75,
+          "percentile": 12.5
+        },
+        "Box entry via run": {
+          "value": 3.8,
+          "percentile": 37.5
+        },
+        "Deep completed passes": {
+          "value": 5.75,
+          "percentile": 33.333333333333336
+        },
+        "Total counterattacks": {
+          "value": 0.45,
+          "percentile": 37.5
+        },
+        "Set piece shot %": {
+          "value": 12.2285,
+          "percentile": 33.333333333333336
+        },
+        "PPDA": {
+          "value": 13.7805,
+          "percentile": 8.333333333333334
+        },
+        "Oppo Progressive pass success %": {
+          "value": 73.14099999999999,
+          "percentile": 20.833333333333332
+        },
+        "Recoveries high %": {
+          "value": 11.097198030009974,
+          "percentile": 4.166666666666667
+        },
+        "Recoveries med %": {
+          "value": 35.20155651463651,
+          "percentile": 8.333333333333334
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.6,
+          "percentile": 29.166666666666668
+        },
+        "Oppo xG": {
+          "value": 2.0155000000000003,
+          "percentile": 4.166666666666667
+        },
+        "Oppo Final third pass success %": {
+          "value": 55.83149999999999,
+          "percentile": 66.66666666666667
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.021039610568767447,
+          "percentile": 4.166666666666667
+        },
+        "Aerial duel success %": {
+          "value": 49.673,
+          "percentile": 91.66666666666667
+        },
+        "Oppo set piece shot %": {
+          "value": 15.376,
+          "percentile": 16.666666666666668
+        }
+      }
+    },
+    {
+      "team": "York",
+      "season": "25/26",
+      "stats": {
+        "Possession": {
+          "value": 63.309500000000014,
+          "percentile": 95.83333333333333
+        },
+        "Long pass %": {
+          "value": 9.743500000000001,
+          "percentile": 0.0
+        },
+        "Losses low %": {
+          "value": 16.560437342410864,
+          "percentile": 75.0
+        },
+        "Progressive pass success %": {
+          "value": 73.46900000000001,
+          "percentile": 87.5
+        },
+        "Final third pass success %": {
+          "value": 65.19449999999999,
+          "percentile": 91.66666666666667
+        },
+        "Final third entries": {
+          "value": 2628.2,
+          "percentile": 87.5
+        },
+        "xG": {
+          "value": 2.5114999999999994,
+          "percentile": 95.83333333333333
+        },
+        "Box entry via cross": {
+          "value": 16.25,
+          "percentile": 95.83333333333333
+        },
+        "Box entry via run": {
+          "value": 4.8,
+          "percentile": 62.5
+        },
+        "Deep completed passes": {
+          "value": 9.65,
+          "percentile": 87.5
+        },
+        "Total counterattacks": {
+          "value": 0.2,
+          "percentile": 0.0
+        },
+        "Set piece shot %": {
+          "value": 19.081999999999997,
+          "percentile": 95.83333333333333
+        },
+        "PPDA": {
+          "value": 9.492,
+          "percentile": 70.83333333333333
+        },
+        "Oppo Progressive pass success %": {
+          "value": 64.24249999999999,
+          "percentile": 87.5
+        },
+        "Recoveries high %": {
+          "value": 18.206479254304544,
+          "percentile": 91.66666666666667
+        },
+        "Recoveries med %": {
+          "value": 38.061631363673584,
+          "percentile": 41.666666666666664
+        },
+        "Oppo Total counterattacks": {
+          "value": 0.4,
+          "percentile": 54.166666666666664
+        },
+        "Oppo xG": {
+          "value": 1.1355,
+          "percentile": 79.16666666666667
+        },
+        "Oppo Final third pass success %": {
+          "value": 53.4415,
+          "percentile": 83.33333333333333
+        },
+        "Oppo open play attacks per final third entry": {
+          "value": 0.02251991372288737,
+          "percentile": 0.0
+        },
+        "Aerial duel success %": {
+          "value": 48.4235,
+          "percentile": 75.0
+        },
+        "Oppo set piece shot %": {
+          "value": 13.499500000000001,
+          "percentile": 50.0
+        }
+      }
+    }
+  ]
+}
