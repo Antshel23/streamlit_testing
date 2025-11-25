@@ -145,7 +145,7 @@ class FootballDashboard:
     def load_data(_self):
         """Load team stats from JSON file"""
         try:
-            with open('/Users/as/Personal projects/yeovil/team_stats.json', 'r') as f:
+            with open('team_stats.json', 'r') as f:
                 return json.load(f)
         except FileNotFoundError:
             st.error("team_stats.json file not found!")
