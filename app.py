@@ -114,7 +114,7 @@ st.markdown("""
             padding: 10px !important;
         }
     }
-</style>""
+</style>
 """, unsafe_allow_html=True)
 
 class FootballDashboard:
