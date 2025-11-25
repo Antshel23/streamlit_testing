@@ -83,7 +83,38 @@ st.markdown("""
         border: 1px solid rgba(139, 92, 246, 0.3);
         border-radius: 10px;
     }
-</style>
+    
+    /* Mobile responsive styles */
+    @media (max-width: 768px) {
+        .mobile-header h1 {
+            font-size: 1.8rem !important;
+            flex-direction: column !important;
+            gap: 10px !important;
+        }
+        
+        .mobile-header img {
+            height: 80px !important;
+        }
+        
+        .mobile-header .header-container {
+            padding: 15px !important;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .mobile-header h1 {
+            font-size: 1.5rem !important;
+        }
+        
+        .mobile-header img {
+            height: 60px !important;
+        }
+        
+        .mobile-header .header-container {
+            padding: 10px !important;
+        }
+    }
+</style>""
 """, unsafe_allow_html=True)
 
 class FootballDashboard:
@@ -378,26 +409,28 @@ class FootballDashboard:
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             st.markdown("""
-            <div style='
-                background-color: #3B913F; 
-                padding: 20px; 
-                border-radius: 15px; 
-                margin-bottom: 30px; 
-                text-align: center;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            '>
-                <h1 style='
-                    color: white; 
-                    margin: 0; 
-                    font-size: 2.5rem; 
-                    display: flex; 
-                    align-items: center; 
-                    justify-content: center; 
-                    gap: 10px;
+            <div class='mobile-header'>
+                <div class='header-container' style='
+                    background-color: #3B913F; 
+                    padding: 20px; 
+                    border-radius: 15px; 
+                    margin-bottom: 30px; 
+                    text-align: center;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
                 '>
-                    {}
-                    Opposition Research
-                </h1>
+                    <h1 style='
+                        color: white; 
+                        margin: 0; 
+                        font-size: 2.5rem; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        gap: 20px;
+                    '>
+                        {}
+                        Opposition Research
+                    </h1>
+                </div>
             </div>
             """.format(
                 f'<img src="data:image/png;base64,{self.get_base64_image("yeovil.png")}" style="height: 150px; width: auto;">' 
