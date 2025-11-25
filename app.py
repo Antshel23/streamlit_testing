@@ -325,7 +325,7 @@ class FootballDashboard:
             ),
             text=[f"{perc:.0f}" for perc in percentiles],
             textposition='outside',
-            textfont=dict(color='white', size=14),
+            textfont=dict(color='white', size=12),
             hovertemplate='<b>%{y}</b><br>' +
                          'Percentile: %{x:.1f}<br>'
         ))
