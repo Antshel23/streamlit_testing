@@ -341,8 +341,7 @@ class FootballDashboard:
                 gridwidth=1,
                 gridcolor='rgba(255,255,255,0.1)',
                 range=[0, 100],
-                title="Percentile Rank",
-                titlefont=dict(color='white', size=11),
+                title=dict(text="Percentile Rank", font=dict(color='white', size=11)),
                 tickfont=dict(color='white', size=10)
             ),
             yaxis=dict(
@@ -394,7 +393,7 @@ class FootballDashboard:
                     display: flex; 
                     align-items: center; 
                     justify-content: center; 
-                    gap: 20px;
+                    gap: 10px;
                 '>
                     {}
                     Opposition Research
