@@ -357,8 +357,7 @@ class FootballDashboard:
             text=[f"{perc:.0f}" for perc in percentiles],
             textposition='outside',
             textfont=dict(color='white', size=12),
-            hovertemplate='<b>%{y}</b><br>' +
-                         'Percentile: %{x:.1f}<br>'
+            hoverinfo='skip'
         ))
         
         fig.update_layout(
@@ -397,7 +396,7 @@ class FootballDashboard:
         
         # Create and display bar chart
         fig = self.create_bar_chart(section['metrics'], section['color'], selected_team)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False, 'staticPlot': True})
     
     def run(self):
         """Main dashboard runner"""
