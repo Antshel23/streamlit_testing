@@ -11,7 +11,7 @@ from PIL import Image
 
 # Configure page
 st.set_page_config(
-    page_title="Football Team Dashboard",
+    page_title="Yeovil Town FC Portal",
     page_icon="⚽",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -20,9 +20,22 @@ st.set_page_config(
 # Custom CSS for styling
 st.markdown("""
 <style>
-    /* Dark theme styling */
+    /* Dark theme styling - remove all default margins/padding */
     .stApp {
         background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* Remove any top spacing from Streamlit containers */
+    .stApp > div:first-child {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .stApp > div:first-child > div:first-child {
+        padding: 0 !important;
+        margin: 0 !important;
     }
     
     /* Header styling */
@@ -65,11 +78,12 @@ st.markdown("""
         text-underline-offset: 4px;
     }
     
-    /* Remove top padding/margin */
+    /* Allow normal Streamlit container behavior */
     .main .block-container {
-        padding-top: 1rem;
-        padding-bottom: 0rem;
-        margin-top: 0rem;
+        padding-top: 0 !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        max-width: 1400px !important;
     }
     
     /* Hide streamlit elements */
@@ -84,34 +98,223 @@ st.markdown("""
         border-radius: 10px;
     }
     
+    /* Header styling for full-width */
+    .header-container {
+        background: linear-gradient(90deg, #3B913F 0%, #2d7a30 100%);
+        border-bottom: 3px solid #2d7a30;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin-top: -1rem;
+        margin-bottom: 2rem;
+        padding: 1rem 2rem;
+    }
+    
+    /* Header navigation styling */
+    .header-nav {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+    
+    /* Header logo section */
+    .header-logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: rgba(255,255,255,0.1);
+        padding: 0.75rem 1.25rem;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+    }
+    
+    .header-logo img {
+        height: 50px;
+        width: auto;
+    }
+    
+    .header-club-name {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        margin: 0;
+    }
+    
+    /* Header navigation buttons */
+    .header-nav-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex: 1;
+        justify-content: center;
+    }
+    
+    .header-nav-title {
+        color: rgba(255,255,255,0.9);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-right: 1rem;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        white-space: nowrap;
+    }
+    
+    .header-nav-buttons {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    
+    .header-nav-button {
+        display: flex;
+        align-items: center;
+        padding: 10px 16px;
+        background: rgba(255,255,255,0.95);
+        color: #2d7a30;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border-bottom: 3px solid transparent;
+        white-space: nowrap;
+    }
+    
+    .header-nav-button:hover {
+        background: rgba(255,255,255,1);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        border-bottom-color: #2d7a30;
+    }
+    
+    .header-nav-button.active {
+        background: rgba(255,255,255,1);
+        color: #2d7a30;
+        border-bottom-color: #3B913F;
+        font-weight: 700;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    
+    .header-nav-button-icon {
+        margin-right: 8px;
+        font-size: 1rem;
+    }
+    
+    /* Content styling */
+    .content-section {
+        padding: 1rem 0;
+    }
+    
     /* Mobile responsive styles */
+    @media (max-width: 1024px) {
+        .header-nav {
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+        
+        .header-nav-section {
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        
+        .header-nav-buttons {
+            justify-content: center;
+        }
+        
+        .header-container {
+            margin-left: calc(-50vw + 50%);
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+        }
+        
+        .header-nav {
+            padding: 1rem;
+        }
+    }
+    
     @media (max-width: 768px) {
-        .mobile-header h1 {
-            font-size: 1.8rem !important;
-            flex-direction: column !important;
-            gap: 10px !important;
+        .header-nav {
+            padding: 1rem;
+            gap: 1rem;
         }
         
-        .mobile-header img {
-            height: 80px !important;
+        .header-logo {
+            padding: 0.5rem 1rem;
         }
         
-        .mobile-header .header-container {
-            padding: 15px !important;
+        .header-logo img {
+            height: 40px !important;
+        }
+        
+        .header-club-name {
+            font-size: 1rem;
+        }
+        
+        .header-nav-button {
+            padding: 8px 12px;
+            font-size: 0.85rem;
+        }
+        
+        .main .block-container {
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+        }
+        
+        .header-container {
+            margin-left: calc(-50vw + 50%);
+            margin-top: -1rem;
+            margin-bottom: 2rem;
         }
     }
     
     @media (max-width: 480px) {
-        .mobile-header h1 {
-            font-size: 1.5rem !important;
+        .header-nav {
+            padding: 0.75rem;
         }
         
-        .mobile-header img {
-            height: 60px !important;
+        .header-logo {
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
         }
         
-        .mobile-header .header-container {
-            padding: 10px !important;
+        .header-logo img {
+            height: 35px !important;
+        }
+        
+        .header-club-name {
+            font-size: 0.9rem;
+        }
+        
+        .header-nav-buttons {
+            gap: 0.5rem;
+        }
+        
+        .header-nav-button {
+            padding: 6px 10px;
+            font-size: 0.8rem;
+        }
+        
+        .main .block-container {
+            padding-left: 0.25rem !important;
+            padding-right: 0.25rem !important;
+        }
+        
+        .header-container {
+            margin-left: calc(-50vw + 50%);
+            margin-top: -1rem;
+            margin-bottom: 2rem;
         }
     }
 </style>
@@ -398,63 +601,87 @@ class FootballDashboard:
         fig = self.create_bar_chart(section['metrics'], section['color'], selected_team)
         st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False, 'staticPlot': True})
     
+    def render_header(self):
+        """Render the header with logo and navigation"""
+        # Header with full-width background
+        st.markdown("""
+        <div class='header-container'>
+            <div class='header-nav'>
+                <div class='header-logo'>
+                    {}
+                    <div class='header-club-name'>YEOVIL TOWN FC</div>
+                </div>
+                <div class='header-nav-section'>
+                    <div class='header-nav-title'>Analytics Portal</div>
+                    <div class='header-nav-buttons'>
+                        <div class='header-nav-button active'>
+                            <span class='header-nav-button-icon'>🔍</span>
+                            Opposition Research
+                        </div>
+                        <div class='header-nav-button'>
+                            <span class='header-nav-button-icon'>👥</span>
+                            Player Recruitment
+                        </div>
+                        <div class='header-nav-button'>
+                            <span class='header-nav-button-icon'>📊</span>
+                            Post-Match Analysis
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        """.format(
+            f'<img src="data:image/png;base64,{self.get_base64_image("yeovil.png")}">' 
+            if self.get_base64_image("yeovil.png") else '<div style="font-size: 2rem; margin-right: 0.5rem;">⚽</div>'
+        ), unsafe_allow_html=True)
+    
     def run(self):
         """Main dashboard runner"""
         if not self.teams:
             st.error("No team data available!")
             return
         
-        # Title with logo
-        col1, col2, col3 = st.columns([1, 2, 1])
-        with col2:
+        # Header in its own container (full width)
+        with st.container():
+            self.render_header()
+        
+        # Main content in Streamlit's default container (with margins)
+        with st.container():
+            st.markdown('<div class="content-section">', unsafe_allow_html=True)
+            
+            # Main content area with title
             st.markdown("""
-            <div class='mobile-header'>
-                <div class='header-container' style='
-                    background-color: #3B913F; 
-                    padding: 20px; 
-                    border-radius: 15px; 
-                    margin-bottom: 30px; 
-                    text-align: center;
-                    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-                '>
-                    <h1 style='
-                        color: white; 
-                        margin: 0; 
-                        font-size: 2.5rem; 
-                        display: flex; 
-                        align-items: center; 
-                        justify-content: center; 
-                        gap: 20px;
-                    '>
-                        {}
-                        Opposition Research
-                    </h1>
+            <div style='margin-bottom: 2rem;'>
+                <h1 style='color: white; margin: 0; font-size: 2.2rem; font-weight: 700;'>
+                    Opposition Research Dashboard
+                </h1>
+                <div style='color: rgba(255,255,255,0.8); font-size: 1rem; margin-top: 0.5rem;'>
+                    Comprehensive analysis and scouting intelligence
                 </div>
             </div>
-            """.format(
-                f'<img src="data:image/png;base64,{self.get_base64_image("yeovil.png")}" style="height: 150px; width: auto;">' 
-                if self.get_base64_image("yeovil.png") else '⚽'
-            ), unsafe_allow_html=True)
-        
-        # Team selector
-        selected_team = st.selectbox(
-            "Select Team",
-            self.teams,
-            index=0,
-            key="team_selector"
-        )
-        
-        if selected_team:
-            # Render stats sections in a 2x2 grid
-            col1, col2 = st.columns(2)
+            """, unsafe_allow_html=True)
             
-            with col1:
-                self.render_section('buildUp', selected_team)
-                self.render_section('press', selected_team)
+            # Team selector
+            selected_team = st.selectbox(
+                "Select Team",
+                self.teams,
+                index=0,
+                key="team_selector"
+            )
             
-            with col2:
-                self.render_section('chanceCreation', selected_team)
-                self.render_section('block', selected_team)
+            if selected_team:
+                # Render stats sections in a 2x2 grid
+                col1, col2 = st.columns(2)
+                
+                with col1:
+                    self.render_section('buildUp', selected_team)
+                    self.render_section('press', selected_team)
+                
+                with col2:
+                    self.render_section('chanceCreation', selected_team)
+                    self.render_section('block', selected_team)
+            
+            st.markdown('</div>', unsafe_allow_html=True)
 
 if __name__ == "__main__":
     dashboard = FootballDashboard()
