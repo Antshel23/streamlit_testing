@@ -78,12 +78,18 @@ st.markdown("""
         text-underline-offset: 4px;
     }
     
+    /* Adjust body for fixed header */
+    body {
+        padding-top: 90px !important;
+    }
+    
     /* Allow normal Streamlit container behavior */
     .main .block-container {
-        padding-top: 0 !important;
+        padding-top: 90px !important;
         padding-left: 1rem !important;
         padding-right: 1rem !important;
-        max-width: 1400px !important;
+        max-width: 1600px !important;
+        margin: 0 auto !important;
     }
     
     /* Hide streamlit elements */
@@ -100,109 +106,132 @@ st.markdown("""
     
     /* Header styling for full-width */
     .header-container {
-        background: linear-gradient(90deg, #3B913F 0%, #2d7a30 100%);
-        border-bottom: 3px solid #2d7a30;
+        background: linear-gradient(90deg, #1758B1 0%, #134a8a 100%);
+        border-bottom: 3px solid #134a8a;
         box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         width: 100vw;
         margin-left: calc(-50vw + 50%);
-        margin-top: -1rem;
-        margin-bottom: 2rem;
-        padding: 1rem 2rem;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0.75rem 2rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        height: auto;
+        min-height: 70px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
     }
     
     /* Header navigation styling */
     .header-nav {
-        max-width: 1400px;
-        margin: 0 auto;
+        width: 100%;
+        margin: 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 2rem;
+        padding: 0;
     }
     
     /* Header logo section */
     .header-logo {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 0.75rem;
         background: rgba(255,255,255,0.1);
-        padding: 0.75rem 1.25rem;
-        border-radius: 12px;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
         backdrop-filter: blur(10px);
+        flex-shrink: 0;
+        height: fit-content;
     }
     
     .header-logo img {
-        height: 50px;
+        height: 35px;
         width: auto;
     }
     
     .header-club-name {
         color: white;
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 700;
         text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         margin: 0;
+    }
+    
+    /* Header search bar */
+    .header-search {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 300px;
+        max-width: 30vw;
+        display: flex;
+        align-items: center;
+    }
+    
+    .header-search input {
+        width: 100%;
+        padding: 0.5rem 1rem;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 20px;
+        background: rgba(255,255,255,0.1);
+        color: white;
+        font-size: 0.9rem;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+    
+    .header-search input::placeholder {
+        color: rgba(255,255,255,0.6);
+    }
+    
+    .header-search input:focus {
+        border-color: rgba(255,255,255,0.6);
+        background: rgba(255,255,255,0.15);
     }
     
     /* Header navigation buttons */
     .header-nav-section {
         display: flex;
         align-items: center;
-        gap: 1rem;
-        flex: 1;
-        justify-content: center;
-    }
-    
-    .header-nav-title {
-        color: rgba(255,255,255,0.9);
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-right: 1rem;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        white-space: nowrap;
-    }
-    
-    .header-nav-buttons {
-        display: flex;
         gap: 0.75rem;
-        align-items: center;
-        flex-wrap: wrap;
+        flex-shrink: 0;
+        height: fit-content;
     }
     
     .header-nav-button {
         display: flex;
         align-items: center;
-        padding: 10px 16px;
+        padding: 8px 12px;
         background: rgba(255,255,255,0.95);
-        color: #2d7a30;
+        color: #1758B1;
         border: none;
-        border-radius: 8px;
-        font-size: 0.9rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
         font-weight: 600;
         text-decoration: none;
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        border-bottom: 3px solid transparent;
+        border-bottom: 2px solid transparent;
         white-space: nowrap;
     }
     
     .header-nav-button:hover {
         background: rgba(255,255,255,1);
-        transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        border-bottom-color: #2d7a30;
+        border: 1px solid rgba(23, 88, 177, 0.3);
     }
     
     .header-nav-button.active {
         background: rgba(255,255,255,1);
-        color: #2d7a30;
-        border-bottom-color: #3B913F;
+        color: #1758B1;
+        border: 2px solid #1758B1;
         font-weight: 700;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     
     .header-nav-button-icon {
@@ -210,95 +239,50 @@ st.markdown("""
         font-size: 1rem;
     }
     
-    /* Content styling */
-    .content-section {
-        padding: 1rem 0;
+    /* Content styling - apply to individual sections */
+    .chart-container {
+        margin: 1rem 2rem;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     /* Mobile responsive styles */
     @media (max-width: 1024px) {
+        .header-container {
+            height: auto;
+            min-height: 90px;
+            padding: 0.75rem 1rem;
+        }
+        
         .header-nav {
-            flex-direction: column;
-            gap: 1.5rem;
-            padding: 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+        
+        .header-logo {
+            order: 1;
+            flex: 0 0 auto;
         }
         
         .header-nav-section {
-            justify-content: flex-start;
-            flex-wrap: wrap;
-        }
-        
-        .header-nav-buttons {
-            justify-content: center;
-        }
-        
-        .header-container {
-            margin-left: calc(-50vw + 50%);
-            margin-top: -1rem;
-            margin-bottom: 2rem;
-            padding: 1rem;
-        }
-        
-        .header-nav {
-            padding: 1rem;
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .header-nav {
-            padding: 1rem;
-            gap: 1rem;
-        }
-        
-        .header-logo {
-            padding: 0.5rem 1rem;
-        }
-        
-        .header-logo img {
-            height: 40px !important;
-        }
-        
-        .header-club-name {
-            font-size: 1rem;
-        }
-        
-        .header-nav-button {
-            padding: 8px 12px;
-            font-size: 0.85rem;
-        }
-        
-        .main .block-container {
-            padding-left: 0.5rem !important;
-            padding-right: 0.5rem !important;
-        }
-        
-        .header-container {
-            margin-left: calc(-50vw + 50%);
-            margin-top: -1rem;
-            margin-bottom: 2rem;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .header-nav {
-            padding: 0.75rem;
-        }
-        
-        .header-logo {
+            order: 2;
+            flex: 0 0 auto;
             gap: 0.5rem;
-            padding: 0.5rem 0.75rem;
         }
         
-        .header-logo img {
-            height: 35px !important;
-        }
-        
-        .header-club-name {
-            font-size: 0.9rem;
-        }
-        
-        .header-nav-buttons {
-            gap: 0.5rem;
+        .header-search {
+            position: static;
+            transform: none;
+            order: 3;
+            flex: 1 0 100%;
+            margin: 0.75rem 0 0 0;
+            max-width: none;
+            width: 100%;
         }
         
         .header-nav-button {
@@ -306,15 +290,166 @@ st.markdown("""
             font-size: 0.8rem;
         }
         
+        body {
+            padding-top: 130px !important;
+        }
+        
+        .main .block-container {
+            padding-top: 130px !important;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .header-container {
+            padding: 0.5rem 0.75rem;
+            min-height: 100px;
+        }
+        
+        .header-nav {
+            gap: 0.5rem;
+        }
+        
+        .header-logo {
+            padding: 0.4rem 0.75rem;
+        }
+        
+        .header-logo img {
+            height: 28px !important;
+        }
+        
+        .header-club-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .header-nav-button {
+            padding: 5px 8px;
+            font-size: 0.7rem;
+            border-radius: 4px;
+        }
+        
+        .header-nav-button-icon {
+            margin-right: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .header-search input {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
+            border-radius: 15px;
+        }
+        
+        .main .block-container {
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+            padding-top: 140px !important;
+        }
+        
+        body {
+            padding-top: 140px !important;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .header-container {
+            padding: 0.4rem 0.5rem;
+            min-height: 110px;
+        }
+        
+        .header-nav {
+            gap: 0.4rem;
+        }
+        
+        .header-logo {
+            gap: 0.4rem;
+            padding: 0.3rem 0.5rem;
+        }
+        
+        .header-logo img {
+            height: 24px !important;
+        }
+        
+        .header-club-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .header-nav-section {
+            gap: 0.25rem;
+            flex-wrap: wrap;
+        }
+        
+        .header-nav-button {
+            padding: 4px 6px;
+            font-size: 0.65rem;
+            border-radius: 3px;
+        }
+        
+        .header-nav-button-icon {
+            margin-right: 2px;
+            font-size: 0.7rem;
+        }
+        
+        .header-search {
+            margin: 0.5rem 0 0 0;
+        }
+        
+        .header-search input {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.6rem;
+            border-radius: 12px;
+        }
+        
         .main .block-container {
             padding-left: 0.25rem !important;
             padding-right: 0.25rem !important;
+            padding-top: 150px !important;
         }
         
+        body {
+            padding-top: 150px !important;
+        }
+    }
+    
+    /* Extra small mobile optimization */
+    @media (max-width: 320px) {
         .header-container {
-            margin-left: calc(-50vw + 50%);
-            margin-top: -1rem;
-            margin-bottom: 2rem;
+            padding: 0.3rem 0.4rem;
+            min-height: 120px;
+        }
+        
+        .header-logo {
+            padding: 0.2rem 0.4rem;
+        }
+        
+        .header-logo img {
+            height: 20px !important;
+        }
+        
+        .header-club-name {
+            font-size: 0.7rem;
+        }
+        
+        .header-nav-button {
+            padding: 3px 5px;
+            font-size: 0.6rem;
+        }
+        
+        .header-nav-button-icon {
+            display: none;
+        }
+        
+        .header-search input {
+            font-size: 0.75rem;
+            padding: 0.35rem 0.5rem;
+        }
+        
+        .main .block-container {
+            padding-top: 160px !important;
+        }
+        
+        body {
+            padding-top: 160px !important;
         }
     }
 </style>
@@ -396,8 +531,8 @@ class FootballDashboard:
                     img_b64 = base64.b64encode(img_bytes).decode()
                     return img_b64
             # Fallback to local path
-            elif os.path.exists(f'/Users/as/Personal projects/yeovil/{image_path}'):
-                with open(f'/Users/as/Personal projects/yeovil/{image_path}', 'rb') as img_file:
+            elif os.path.exists(f'/Users/as/Personal projects/wigan/{image_path}'):
+                with open(f'/Users/as/Personal projects/wigan/{image_path}', 'rb') as img_file:
                     img_bytes = img_file.read()
                     img_b64 = base64.b64encode(img_bytes).decode()
                     return img_b64
@@ -594,7 +729,7 @@ class FootballDashboard:
         section = self.sections[section_key]
         
         st.markdown(f"""
-        <h3 class="section-title" style="color: white; font-size: 1.2rem; margin-bottom: 10px; margin-top: 0px;">{section['title']}</h3>
+        <div class="section-title" style="color: white; font-size: 1.2rem; margin-bottom: 10px; margin-top: 0px; font-weight: 600;">{section['title']}</div>
         """, unsafe_allow_html=True)
         
         # Create and display bar chart
@@ -609,30 +744,30 @@ class FootballDashboard:
             <div class='header-nav'>
                 <div class='header-logo'>
                     {}
-                    <div class='header-club-name'>YEOVIL TOWN FC</div>
+                    <div class='header-club-name'>LATICS PORTAL</div>
+                </div>
+                <div class='header-search'>
+                    <input type='text' placeholder='Search teams, players, stats...' />
                 </div>
                 <div class='header-nav-section'>
-                    <div class='header-nav-title'>Analytics Portal</div>
-                    <div class='header-nav-buttons'>
-                        <div class='header-nav-button active'>
-                            <span class='header-nav-button-icon'>🔍</span>
-                            Opposition Research
-                        </div>
-                        <div class='header-nav-button'>
-                            <span class='header-nav-button-icon'>👥</span>
-                            Player Recruitment
-                        </div>
-                        <div class='header-nav-button'>
-                            <span class='header-nav-button-icon'>📊</span>
-                            Post-Match Analysis
-                        </div>
+                    <div class='header-nav-button active'>
+                        <span class='header-nav-button-icon'>📊</span>
+                        Opposition Research
+                    </div>
+                    <div class='header-nav-button'>
+                        <span class='header-nav-button-icon'>📊</span>
+                        Player Recruitment
+                    </div>
+                    <div class='header-nav-button'>
+                        <span class='header-nav-button-icon'>📊</span>
+                        Post-Match Analysis
                     </div>
                 </div>
             </div>
         </div>
         """.format(
-            f'<img src="data:image/png;base64,{self.get_base64_image("yeovil.png")}">' 
-            if self.get_base64_image("yeovil.png") else '<div style="font-size: 2rem; margin-right: 0.5rem;">⚽</div>'
+            f'<img src="data:image/png;base64,{self.get_base64_image("wigan.png")}">' 
+            if self.get_base64_image("yeovil.png") else '<div style="font-size: 1.5rem; margin-right: 0.5rem;">⚽</div>'
         ), unsafe_allow_html=True)
     
     def run(self):
@@ -647,19 +782,7 @@ class FootballDashboard:
         
         # Main content in Streamlit's default container (with margins)
         with st.container():
-            st.markdown('<div class="content-section">', unsafe_allow_html=True)
-            
-            # Main content area with title
-            st.markdown("""
-            <div style='margin-bottom: 2rem;'>
-                <h1 style='color: white; margin: 0; font-size: 2.2rem; font-weight: 700;'>
-                    Opposition Research Dashboard
-                </h1>
-                <div style='color: rgba(255,255,255,0.8); font-size: 1rem; margin-top: 0.5rem;'>
-                    Comprehensive analysis and scouting intelligence
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+            # Team selector
             
             # Team selector
             selected_team = st.selectbox(
@@ -680,8 +803,6 @@ class FootballDashboard:
                 with col2:
                     self.render_section('chanceCreation', selected_team)
                     self.render_section('block', selected_team)
-            
-            st.markdown('</div>', unsafe_allow_html=True)
 
 if __name__ == "__main__":
     dashboard = FootballDashboard()
