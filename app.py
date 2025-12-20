@@ -460,7 +460,7 @@ class FootballDashboard:
         self.data = self.load_data()
         self.teams = sorted([team['team'] for team in self.data['teams']])
         
-        # Define sections and metrics (matching your React component)
+        # Define sections and metrics (mapped to CSV columns)
         self.sections = {
             'buildUp': {
                 'title': 'Build Up',
@@ -468,22 +468,21 @@ class FootballDashboard:
                 'metrics': [
                     {'name': 'Possession', 'key': 'Possession'},
                     {'name': 'Long Ball %', 'key': 'Long pass %'},
-                    {'name': 'Build Up Safety', 'key': 'Losses low %'},
+                    {'name': 'Build Up Safety', 'key': 'Low losses'},
                     {'name': 'Def/Mid 3rd Progression', 'key': 'Progressive pass success %'},
                     {'name': 'Final 3rd Progression', 'key': 'Final third pass success %'},
-                    {'name': 'Final 3rd Entries', 'key': 'Final third entries'}
+                    {'name': 'Final 3rd Entries', 'key': 'Total box entries'}
                 ]
             },
             'chanceCreation': {
                 'title': 'Chance Creation',
                 'color': '#D50033',
                 'metrics': [
-                    {'name': 'xG', 'key': 'xG'},
                     {'name': 'Wide Crosses', 'key': 'Box entry via cross'},
                     {'name': '1v1 Dribbles', 'key': 'Box entry via run'},
                     {'name': 'Interplay in 10 space', 'key': 'Deep completed passes'},
                     {'name': 'Att Transition', 'key': 'Total counterattacks'},
-                    {'name': 'Set-piece efficiency', 'key': 'Set piece shot %'}
+                    {'name': 'Set-piece efficiency', 'key': 'Set piece shot %'},
                 ]
             },
             'press': {
@@ -492,8 +491,8 @@ class FootballDashboard:
                 'metrics': [
                     {'name': 'Press Intensity', 'key': 'PPDA'},
                     {'name': 'Press Efficiency', 'key': 'Oppo Progressive pass success %'},
-                    {'name': 'High Regains', 'key': 'Recoveries high %'},
-                    {'name': 'Central Regains', 'key': 'Recoveries med %'},
+                    {'name': 'High Regains', 'key': 'High recoveries'},
+                    {'name': 'Central Regains', 'key': 'Med recoveries'},
                     {'name': 'Def Transition', 'key': 'Oppo Total counterattacks'}
                 ]
             },
@@ -501,23 +500,60 @@ class FootballDashboard:
                 'title': 'Block',
                 'color': '#1A988B',
                 'metrics': [
-                    {'name': 'xG Conceded', 'key': 'Oppo xG'},
                     {'name': 'Final Third Restriction', 'key': 'Oppo Final third pass success %'},
-                    {'name': 'Chance Restriction', 'key': 'Oppo open play attacks per final third entry'},
+                    {'name': 'Chance Restriction', 'key': 'Oppo Positional attacks leading to shot %'},
                     {'name': 'Aerial Dominance', 'key': 'Aerial duel success %'},
-                    {'name': 'Def Set-piece Efficiency', 'key': 'Oppo set piece shot %'}
+                    {'name': 'Def Set-piece Efficiency', 'key': 'Oppo Set piece shot %'},
                 ]
             }
         }
     
     @st.cache_data
     def load_data(_self):
-        """Load team stats from JSON file"""
+        """Load team stats from CSV file and calculate percentiles"""
         try:
-            with open('team_stats.json', 'r') as f:
-                return json.load(f)
+            # Read CSV file
+            df = pd.read_csv('leagueone.csv')
+            
+            # Calculate percentiles for each numeric column
+            percentile_df = df.copy()
+            for col in df.columns:
+                if col != 'Team' and pd.api.types.is_numeric_dtype(df[col]):
+                    # Check if this is an opponent stat or PPDA (where lower is better)
+                    if col.startswith('Oppo') or col == 'PPDA':
+                        # For opponent stats and PPDA, calculate inverse percentiles
+                        # Handle zero/negative values by adding small epsilon
+                        safe_values = df[col].replace(0, 0.001)  # Replace 0 with small value
+                        safe_values = safe_values.abs()  # Ensure positive values
+                        inverse_values = 1 / safe_values
+                        percentile_df[f'{col}_percentile'] = inverse_values.rank(pct=True) * 100
+                    else:
+                        # Normal percentile calculation for regular stats
+                        percentile_df[f'{col}_percentile'] = df[col].rank(pct=True) * 100
+            
+            # Convert to the expected format
+            teams = []
+            for _, row in percentile_df.iterrows():
+                team_stats = {}
+                for col in df.columns:
+                    if col != 'Team' and pd.api.types.is_numeric_dtype(df[col]):
+                        team_stats[col] = {
+                            'value': row[col],
+                            'percentile': row[f'{col}_percentile']
+                        }
+                
+                teams.append({
+                    'team': row['Team'],
+                    'stats': team_stats
+                })
+            
+            return {'teams': teams}
+            
         except FileNotFoundError:
-            st.error("team_stats.json file not found!")
+            st.error("team_stats.csv file not found!")
+            return {"teams": []}
+        except Exception as e:
+            st.error(f"Error loading data: {e}")
             return {"teams": []}
     
     def get_base64_image(self, image_path):
@@ -540,6 +576,12 @@ class FootballDashboard:
             st.warning(f"Could not load image: {e}")
         return ""
     
+    def get_team_logo(self, team_name):
+        """Get team logo based on team name"""
+        # Convert team name to lowercase and replace spaces with nothing for filename
+        logo_filename = team_name.lower().replace(' ', '').replace('fc', '').replace('town', '').replace('united', '').replace('city', '') + '.png'
+        return self.get_base64_image(logo_filename)
+    
     def get_team_data(self, team_name):
         """Get data for a specific team"""
         for team in self.data['teams']:
@@ -556,8 +598,17 @@ class FootballDashboard:
         
         # Sort by value (descending for most metrics)
         reverse_sort = True
-        if metric_key in ['Oppo xG', 'PPDA', 'Oppo Total counterattacks', 'Oppo set piece shot %']:
-            reverse_sort = False  # Lower is better for these metrics
+        # For these metrics, lower is better
+        lower_is_better_metrics = [
+            'Oppo xG', 'PPDA', 'Oppo Total counterattacks', 'Oppo Set piece shot %',
+            'Low losses', 'Med Losses', 'High losses', 'Oppo Goals', 'Conceded goals',
+            'Oppo Total shots', 'Oppo SOT against', 'Oppo Total box entries',
+            'Oppo Box entry via run', 'Oppo Box entry via cross', 'Oppo Penalty area touches',
+            'Oppo Positional attacks leading to shot %', 'Oppo Final third pass success %'
+        ]
+        
+        if metric_key in lower_is_better_metrics:
+            reverse_sort = False
             
         values.sort(key=lambda x: x[0], reverse=reverse_sort)
         
@@ -565,6 +616,25 @@ class FootballDashboard:
             if name == team_name:
                 return rank
         return len(values)
+    
+    def get_ordinal_suffix(self, number):
+        """Get ordinal suffix (st, nd, rd, th) for a number"""
+        if 10 <= number % 100 <= 20:
+            return "th"
+        else:
+            suffix_map = {1: "st", 2: "nd", 3: "rd"}
+            return suffix_map.get(number % 10, "th")
+    
+    def get_percentile_color(self, percentile):
+        """Get color based on percentile using red-green scale"""
+        if percentile >= 75:
+            return '#32CD32'  # Green (top quartile)
+        elif percentile >= 50:
+            return '#FFD700'  # Gold (above average)
+        elif percentile >= 25:
+            return '#FF6B35'  # Orange-red (below average)
+        else:
+            return '#DC143C'  # Dark red (bottom quartile)
     
     def get_rank_color(self, rank, total_teams=24):
         """Get color based on league rank (1st = green, last = red)"""
@@ -782,17 +852,135 @@ class FootballDashboard:
         
         # Main content in Streamlit's default container (with margins)
         with st.container():
-            # Team selector
+            # Create columns for logo, team selector and headline stats
+            col1, col2, col3 = st.columns([1, 1, 3])
             
-            # Team selector
-            selected_team = st.selectbox(
-                "Select Team",
-                self.teams,
-                index=0,
-                key="team_selector"
-            )
+            # Initialize selected_team variable
+            selected_team = None
+            
+            with col1:
+                # Team logo (bigger and on far left)
+                # We'll populate this after team selection
+                pass
+            
+            with col2:
+                # Team selector dropdown - smaller and vertically centered
+                st.markdown("<div style='padding-top: 2.5rem;'></div>", unsafe_allow_html=True)
+                selected_team = st.selectbox(
+                    "Team",
+                    self.teams,
+                    index=0,
+                    key="team_selector",
+                    label_visibility="collapsed"
+                )
+            
+            with col3:
+                # Headline stats will be populated after team selection
+                pass
+            
+            # Now populate the logo and stats based on selection
+            with col1:
+                if selected_team:
+                    team_logo = self.get_team_logo(selected_team)
+                    if team_logo:
+                        st.markdown(f"""
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                            <img src="data:image/png;base64,{team_logo}" 
+                                 style="height: 120px; width: auto; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.3);">
+                        </div>
+                        """, unsafe_allow_html=True)
+            
+            with col3:
+                if selected_team:
+                    # Get team data for headline stats
+                    team_data = self.get_team_data(selected_team)
+                    if team_data and 'xG' in team_data['stats'] and 'Oppo xG' in team_data['stats']:
+                        xg_rank = self.get_league_rank('xG', selected_team)
+                        oppo_xg_rank = self.get_league_rank('Oppo xG', selected_team)
+                        xg_percentile = team_data['stats']['xG']['percentile']
+                        oppo_xg_percentile = team_data['stats']['Oppo xG']['percentile']
+                        
+                        # Get colors based on percentile
+                        xg_color = self.get_percentile_color(xg_percentile)
+                        oppo_xg_color = self.get_percentile_color(oppo_xg_percentile)
+                        
+                        # Create two columns for the stats boxes
+                        stat_col1, stat_col2 = st.columns(2)
+                        
+                        with stat_col1:
+                            st.markdown(f'''
+                            <div style="
+                                background: linear-gradient(135deg, rgba(20, 25, 40, 0.95) 0%, rgba(10, 15, 30, 0.98) 100%);
+                                border-radius: 15px;
+                                padding: 0.8rem 0.6rem;
+                                text-align: center;
+                                border: 1px solid rgba(255, 255, 255, 0.15);
+                                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                                backdrop-filter: blur(10px);
+                                transition: transform 0.2s ease;
+                            ">
+                                <div style="
+                                    font-size: 0.8rem;
+                                    font-weight: 500;
+                                    color: rgba(255, 255, 255, 0.8);
+                                    margin-bottom: 0.4rem;
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.5px;
+                                ">Expected Goals</div>
+                                <div style="
+                                    font-size: 1.6rem;
+                                    color: {xg_color};
+                                    font-weight: 800;
+                                    margin-bottom: 0.2rem;
+                                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                                ">{xg_rank}{self.get_ordinal_suffix(xg_rank)}</div>
+                                <div style="
+                                    font-size: 0.8rem;
+                                    color: rgba(255, 255, 255, 0.9);
+                                    font-weight: 600;
+                                ">{team_data['stats']['xG']['value']:.2f}</div>
+                            </div>
+                            ''', unsafe_allow_html=True)
+                        
+                        with stat_col2:
+                            st.markdown(f'''
+                            <div style="
+                                background: linear-gradient(135deg, rgba(20, 25, 40, 0.95) 0%, rgba(10, 15, 30, 0.98) 100%);
+                                border-radius: 15px;
+                                padding: 0.8rem 0.6rem;
+                                text-align: center;
+                                border: 1px solid rgba(255, 255, 255, 0.15);
+                                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                                backdrop-filter: blur(10px);
+                                transition: transform 0.2s ease;
+                            ">
+                                <div style="
+                                    font-size: 0.8rem;
+                                    font-weight: 500;
+                                    color: rgba(255, 255, 255, 0.8);
+                                    margin-bottom: 0.4rem;
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.5px;
+                                ">xG Conceded</div>
+                                <div style="
+                                    font-size: 1.6rem;
+                                    color: {oppo_xg_color};
+                                    font-weight: 800;
+                                    margin-bottom: 0.2rem;
+                                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                                ">{oppo_xg_rank}{self.get_ordinal_suffix(oppo_xg_rank)}</div>
+                                <div style="
+                                    font-size: 0.8rem;
+                                    color: rgba(255, 255, 255, 0.9);
+                                    font-weight: 600;
+                                ">{team_data['stats']['Oppo xG']['value']:.2f}</div>
+                            </div>
+                            ''', unsafe_allow_html=True)
             
             if selected_team:
+                # Add spacing before charts
+                st.markdown("<div style='margin-top: 2rem;'></div>", unsafe_allow_html=True)
+                
                 # Render stats sections in a 2x2 grid
                 col1, col2 = st.columns(2)
                 
