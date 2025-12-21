@@ -2,9 +2,29 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import base64
-import matplotlib.pyplot as plt
-from pizza_plot import plot_player
 import io
+import os
+
+try:
+    import matplotlib.pyplot as plt
+    import matplotlib
+    matplotlib.use('Agg')  # Use non-interactive backend for deployment
+    MATPLOTLIB_AVAILABLE = True
+except ImportError:
+    MATPLOTLIB_AVAILABLE = False
+    st.error("Matplotlib not available")
+
+try:
+    from pizza_plot import plot_player
+    PIZZA_PLOT_AVAILABLE = True
+except ImportError:
+    PIZZA_PLOT_AVAILABLE = False
+    
+try:
+    from mplsoccer import PyPizza, FontManager
+    MPLSOCCER_AVAILABLE = True
+except ImportError:
+    MPLSOCCER_AVAILABLE = False
 
 class PlayerRecruitmentPage:
     def __init__(self):
@@ -13,18 +33,41 @@ class PlayerRecruitmentPage:
     def load_data(self):
         """Load players data from CSV"""
         try:
-            self.df = pd.read_csv('players.csv')
-            print(f"Loaded {len(self.df)} player records")
-        except FileNotFoundError:
-            st.error("players.csv file not found!")
+            # Try multiple possible paths for deployment
+            possible_paths = ['players.csv', './players.csv', os.path.join(os.getcwd(), 'players.csv')]
+            
+            for path in possible_paths:
+                if os.path.exists(path):
+                    self.df = pd.read_csv(path)
+                    print(f"Loaded {len(self.df)} player records from {path}")
+                    return
+            
+            # If no file found, create empty DataFrame and show error
+            st.error("players.csv file not found! Player recruitment features will be limited.")
+            self.df = pd.DataFrame()
+            
+        except Exception as e:
+            st.error(f"Error loading player data: {str(e)}")
             self.df = pd.DataFrame()
     
     def get_base64_image(self, image_path):
         """Convert image to base64 string"""
         try:
-            with open(image_path, "rb") as img_file:
-                return base64.b64encode(img_file.read()).decode()
-        except FileNotFoundError:
+            # Try multiple possible paths for deployment
+            possible_paths = [
+                image_path, 
+                f'./{image_path}', 
+                os.path.join(os.getcwd(), image_path)
+            ]
+            
+            for path in possible_paths:
+                if os.path.exists(path):
+                    with open(path, "rb") as img_file:
+                        return base64.b64encode(img_file.read()).decode()
+            
+            return None
+        except Exception as e:
+            print(f"Error loading image {image_path}: {e}")
             return None
     
     def get_player_data(self, player_name):
@@ -69,6 +112,16 @@ class PlayerRecruitmentPage:
     def create_pizza_plot(self, player_name, team_name, position_group):
         """Create a pizza plot for the player and return as base64"""
         if self.df.empty:
+            st.warning("No player data available.")
+            return None
+        
+        # Check for required dependencies
+        if not MATPLOTLIB_AVAILABLE:
+            st.error("Matplotlib not available. Cannot create pizza plots.")
+            return None
+            
+        if not MPLSOCCER_AVAILABLE:
+            st.error("mplsoccer not available. Cannot create pizza plots. Please add 'mplsoccer' to requirements.txt")
             return None
         
         try:
@@ -85,7 +138,7 @@ class PlayerRecruitmentPage:
             ]
 
             if player_data.empty:
-                print(f"N/A: Player {player_name} not found for {team_name}.")
+                st.warning(f"Player {player_name} not found for {team_name}.")
                 return None
 
             # Position-specific percentile columns for radar plots
@@ -500,6 +553,44 @@ class PlayerRecruitmentPage:
         </style>
         """, unsafe_allow_html=True)
         
-        # Main content
+        # Check if player data is available
+        if self.df.empty:
+            st.markdown("""
+            <div style="text-align: center; margin-top: 4rem;">
+                <h1 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">👥 Player Recruitment</h1>
+                <div style="background: rgba(255, 193, 7, 0.1); padding: 2rem; border-radius: 15px; border-left: 4px solid #FFC107; margin: 2rem 0;">
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; margin-bottom: 1rem;">⚠️ Player data not available</p>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 1rem;">
+                        The player recruitment features require the players.csv file to be available.<br>
+                        Please ensure the file is uploaded to your deployment platform.
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            return
+        
+        # Check for missing dependencies
+        missing_deps = []
+        if not MATPLOTLIB_AVAILABLE:
+            missing_deps.append("matplotlib")
+        if not MPLSOCCER_AVAILABLE:
+            missing_deps.append("mplsoccer")
+            
+        if missing_deps:
+            st.markdown(f"""
+            <div style="text-align: center; margin-top: 4rem;">
+                <h1 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">👥 Player Recruitment</h1>
+                <div style="background: rgba(220, 53, 69, 0.1); padding: 2rem; border-radius: 15px; border-left: 4px solid #DC3545; margin: 2rem 0;">
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; margin-bottom: 1rem;">📦 Missing Dependencies</p>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 1rem;">
+                        The following packages are required: {', '.join(missing_deps)}<br>
+                        Please add them to your requirements.txt file and redeploy.
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+            return
+        
+        # Main content - only show if everything is available
         # Charlie Webster profile
         self.render_player_profile("Charlie Webster")

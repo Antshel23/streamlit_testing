@@ -928,10 +928,35 @@ class FootballDashboard:
         # Show different pages based on session state
         if st.session_state.current_page == 'Player Recruitment':
             if PlayerRecruitmentPage:
-                player_page = PlayerRecruitmentPage()
-                player_page.run()
+                try:
+                    player_page = PlayerRecruitmentPage()
+                    player_page.run()
+                except Exception as e:
+                    st.markdown("""
+                    <div style="text-align: center; margin-top: 4rem;">
+                        <h1 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">👥 Player Recruitment</h1>
+                        <div style="background: rgba(220, 53, 69, 0.1); padding: 2rem; border-radius: 15px; border-left: 4px solid #DC3545; margin: 2rem 0;">
+                            <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; margin-bottom: 1rem;">⚠️ Feature Temporarily Unavailable</p>
+                            <p style="color: rgba(255,255,255,0.6); font-size: 1rem;">
+                                The player recruitment feature is experiencing technical difficulties.<br>
+                                Please try again later or contact support if the issue persists.
+                            </p>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
             else:
-                st.error("Player recruitment page not available")
+                st.markdown("""
+                <div style="text-align: center; margin-top: 4rem;">
+                    <h1 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">👥 Player Recruitment</h1>
+                    <div style="background: rgba(255, 193, 7, 0.1); padding: 2rem; border-radius: 15px; border-left: 4px solid #FFC107; margin: 2rem 0;">
+                        <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; margin-bottom: 1rem;">🚧 Under Development</p>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 1rem;">
+                            The player recruitment module is currently being set up.<br>
+                            This feature will be available soon with comprehensive player analysis tools.
+                        </p>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
         elif st.session_state.current_page == 'Post-Match Analysis':
             st.markdown("""
             <div style="text-align: center; margin-top: 4rem;">
