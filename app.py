@@ -134,8 +134,13 @@ st.markdown("""
         border-radius: 10px;
     }
     
-    /* Navigation button styling */
-    div[data-testid="column"] .stButton > button {
+    /* Navigation button styling - Multiple selectors for higher specificity in deployment */
+    div[data-testid="column"] .stButton > button,
+    .stApp div[data-testid="column"] .stButton > button,
+    .main div[data-testid="column"] .stButton > button,
+    div.stButton > button,
+    button[kind="primary"],
+    button[kind="secondary"] {
         background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%) !important;
         color: white !important;
         border: 1px solid rgba(255,255,255,0.2) !important;
@@ -147,7 +152,12 @@ st.markdown("""
         box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3) !important;
     }
     
-    div[data-testid="column"] .stButton > button:hover {
+    div[data-testid="column"] .stButton > button:hover,
+    .stApp div[data-testid="column"] .stButton > button:hover,
+    .main div[data-testid="column"] .stButton > button:hover,
+    div.stButton > button:hover,
+    button[kind="primary"]:hover,
+    button[kind="secondary"]:hover {
         background: linear-gradient(135deg, #9333EA 0%, #8B5CF6 100%) !important;
         border: 1px solid rgba(255,255,255,0.4) !important;
         transform: translateY(-2px) !important;
