@@ -9,13 +9,30 @@ import base64
 from io import BytesIO
 from PIL import Image
 
+# Import player recruitment page
+try:
+    from player_recruitment_page import PlayerRecruitmentPage
+except ImportError:
+    PlayerRecruitmentPage = None
+
 # Configure page
 st.set_page_config(
-    page_title="Yeovil Town FC Portal",
+    page_title="Latics Portal",
     page_icon="⚽",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
+
+# Check URL parameters for navigation
+query_params = st.query_params
+if 'page' in query_params:
+    current_page = query_params['page']
+else:
+    current_page = 'Opposition Research'
+
+# Initialize session state for navigation
+if 'current_page' not in st.session_state:
+    st.session_state.current_page = current_page
 
 # Custom CSS for styling
 st.markdown("""
@@ -218,6 +235,14 @@ st.markdown("""
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         border-bottom: 2px solid transparent;
         white-space: nowrap;
+        user-select: none;
+        min-height: 36px;
+        height: 36px;
+        max-height: 36px;
+        box-sizing: border-box;
+        justify-content: center;
+        flex-shrink: 0;
+        min-width: fit-content;
     }
     
     .header-nav-button:hover {
@@ -288,6 +313,12 @@ st.markdown("""
         .header-nav-button {
             padding: 6px 10px;
             font-size: 0.8rem;
+            min-height: 36px;
+            height: 36px;
+            max-height: 36px;
+            box-sizing: border-box;
+            justify-content: center;
+            flex-shrink: 0;
         }
         
         body {
@@ -326,6 +357,12 @@ st.markdown("""
             padding: 5px 8px;
             font-size: 0.7rem;
             border-radius: 4px;
+            min-height: 36px;
+            height: 36px;
+            max-height: 36px;
+            box-sizing: border-box;
+            justify-content: center;
+            flex-shrink: 0;
         }
         
         .header-nav-button-icon {
@@ -383,6 +420,12 @@ st.markdown("""
             padding: 4px 6px;
             font-size: 0.65rem;
             border-radius: 3px;
+            min-height: 36px;
+            height: 36px;
+            max-height: 36px;
+            box-sizing: border-box;
+            justify-content: center;
+            flex-shrink: 0;
         }
         
         .header-nav-button-icon {
@@ -466,11 +509,11 @@ class FootballDashboard:
                 'title': 'Build Up',
                 'color': '#7406B5',
                 'metrics': [
-                    {'name': 'Possession', 'key': 'Possession'},
-                    {'name': 'Long Ball %', 'key': 'Long pass %'},
+                    {'name': 'Retain Possession', 'key': 'Possession'},
+                    {'name': 'Directness', 'key': 'Long pass %'},
                     {'name': 'Build Up Safety', 'key': 'Low losses'},
-                    {'name': 'Def/Mid 3rd Progression', 'key': 'Progressive pass success %'},
-                    {'name': 'Final 3rd Progression', 'key': 'Final third pass success %'},
+                    {'name': 'Def -> Mid 3rd Progression', 'key': 'Progressive pass success %'},
+                    {'name': 'Mid -> Final 3rd Progression', 'key': 'Final third pass success %'},
                     {'name': 'Final 3rd Entries', 'key': 'Total box entries'}
                 ]
             },
@@ -794,6 +837,158 @@ class FootballDashboard:
     
 
     
+    def render_sidebar(self):
+        """Render the navigation sidebar"""
+        with st.sidebar:
+            # Sidebar styling
+            st.markdown("""
+            <style>
+            .stSidebar {
+                background: linear-gradient(135deg, #1758B1 0%, #134a8a 100%) !important;
+                width: 140px !important;
+                min-width: 140px !important;
+                max-width: 140px !important;
+            }
+            .stSidebar > div:first-child {
+                background: linear-gradient(135deg, #1758B1 0%, #134a8a 100%) !important;
+                width: 140px !important;
+                min-width: 140px !important;
+                max-width: 140px !important;
+                padding: 0.75rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            .stSidebar .element-container {
+                width: 100% !important;
+                display: flex !important;
+                justify-content: center !important;
+            }
+            .stButton {
+                width: 100% !important;
+                display: flex !important;
+                justify-content: center !important;
+            }
+            .stButton > button {
+                padding: 6px 8px !important;
+                margin: 3px 0 !important;
+                background: rgba(255,255,255,0.95) !important;
+                color: #1758B1 !important;
+                border: none !important;
+                border-radius: 4px !important;
+                font-size: 0.7rem !important;
+                font-weight: 500 !important;
+                cursor: pointer !important;
+                transition: all 0.3s ease !important;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.1) !important;
+                white-space: nowrap !important;
+                width: 110px !important;
+                text-align: center !important;
+                height: 32px !important;
+                min-height: 32px !important;
+                max-height: 32px !important;
+                border: 1px solid transparent !important;
+                box-sizing: border-box !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .stButton > button:hover {
+                background: rgba(255,255,255,1) !important;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.15) !important;
+                border: 1px solid rgba(255,255,255,0.5) !important;
+                transform: translateY(-1px) !important;
+                width: 110px !important;
+                height: 32px !important;
+                min-height: 32px !important;
+                max-height: 32px !important;
+            }
+            /* Mobile specific button sizing */
+            @media (max-width: 768px) {
+                .stButton > button {
+                    width: 110px !important;
+                    height: 32px !important;
+                    min-height: 32px !important;
+                    max-height: 32px !important;
+                    font-size: 0.7rem !important;
+                    padding: 6px 8px !important;
+                }
+                .stButton > button:hover {
+                    width: 110px !important;
+                    height: 32px !important;
+                    min-height: 32px !important;
+                    max-height: 32px !important;
+                }
+            }
+            .sidebar-logo {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.25rem;
+                background: rgba(255,255,255,0.1);
+                padding: 0.4rem;
+                border-radius: 6px;
+                backdrop-filter: blur(10px);
+                margin-bottom: 0.75rem;
+                flex-direction: column;
+            }
+            .sidebar-logo img {
+                height: 18px;
+                width: auto;
+            }
+            .sidebar-club-name {
+                color: white;
+                font-size: 0.6rem;
+                font-weight: 600;
+                text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+                margin: 0;
+                text-align: center;
+                line-height: 1.1;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+            
+            # Sidebar logo and title
+            logo_b64 = self.get_base64_image("wigan.png")
+            st.markdown(f"""
+            <div class="sidebar-logo">
+                {f'<img src="data:image/png;base64,{logo_b64}">' if logo_b64 else '<div style="font-size: 1.2rem;">⚽</div>'}
+                <div class="sidebar-club-name">LATICS PORTAL</div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Navigation buttons
+            if st.button("Opposition", key="sidebar_nav_opposition", use_container_width=True):
+                st.session_state.current_page = "Opposition Research"
+                st.rerun()
+                
+            if st.button("Recruitment", key="sidebar_nav_player", use_container_width=True):
+                st.session_state.current_page = "Player Recruitment"
+                st.rerun()
+                
+            if st.button("Game Review", key="sidebar_nav_analysis", use_container_width=True):
+                st.session_state.current_page = "Post-Match Analysis"
+                st.rerun()
+    
+    def render_header(self):
+        """Render the header with logo and search bar only"""
+        # Header with full-width background
+        st.markdown("""
+        <div class='header-container'>
+            <div class='header-nav' style='justify-content: center; gap: 2rem;'>
+                <div class='header-logo'>
+                    {}
+                    <div class='header-club-name'>LATICS PORTAL</div>
+                </div>
+                <div class='header-search' style='position: static; transform: none; width: 350px; max-width: none;'>
+                    <input type='text' placeholder='Search teams, players, stats...' />
+                </div>
+            </div>
+        </div>
+        """.format(
+            f'<img src="data:image/png;base64,{self.get_base64_image("wigan.png")}">' 
+            if self.get_base64_image("wigan.png") else '<div style="font-size: 1.5rem; margin-right: 0.5rem;">⚽</div>'
+        ), unsafe_allow_html=True)
     def render_section(self, section_key, selected_team):
         """Render a stats section with bar chart"""
         section = self.sections[section_key]
@@ -806,49 +1001,43 @@ class FootballDashboard:
         fig = self.create_bar_chart(section['metrics'], section['color'], selected_team)
         st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False, 'staticPlot': True})
     
-    def render_header(self):
-        """Render the header with logo and navigation"""
-        # Header with full-width background
-        st.markdown("""
-        <div class='header-container'>
-            <div class='header-nav'>
-                <div class='header-logo'>
-                    {}
-                    <div class='header-club-name'>LATICS PORTAL</div>
-                </div>
-                <div class='header-search'>
-                    <input type='text' placeholder='Search teams, players, stats...' />
-                </div>
-                <div class='header-nav-section'>
-                    <div class='header-nav-button active'>
-                        <span class='header-nav-button-icon'>📊</span>
-                        Opposition Research
-                    </div>
-                    <div class='header-nav-button'>
-                        <span class='header-nav-button-icon'>📊</span>
-                        Player Recruitment
-                    </div>
-                    <div class='header-nav-button'>
-                        <span class='header-nav-button-icon'>📊</span>
-                        Post-Match Analysis
-                    </div>
-                </div>
-            </div>
-        </div>
-        """.format(
-            f'<img src="data:image/png;base64,{self.get_base64_image("wigan.png")}">' 
-            if self.get_base64_image("yeovil.png") else '<div style="font-size: 1.5rem; margin-right: 0.5rem;">⚽</div>'
-        ), unsafe_allow_html=True)
-    
     def run(self):
-        """Main dashboard runner"""
+        """Main dashboard runner with navigation"""
+        # Update session state with current page from URL
+        query_params = st.query_params
+        if 'page' in query_params:
+            st.session_state.current_page = query_params['page']
+        
+        # Render sidebar navigation
+        self.render_sidebar()
+        
+        # Header (always shown)
+        with st.container():
+            self.render_header()
+        
+        # Show different pages based on session state
+        if st.session_state.current_page == 'Player Recruitment':
+            if PlayerRecruitmentPage:
+                player_page = PlayerRecruitmentPage()
+                player_page.run()
+            else:
+                st.error("Player recruitment page not available")
+        elif st.session_state.current_page == 'Post-Match Analysis':
+            st.markdown("""
+            <div style="text-align: center; margin-top: 4rem;">
+                <h1 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">Post-Match Analysis</h1>
+                <p style="color: rgba(255,255,255,0.7); font-size: 1.2rem;">Coming Soon...</p>
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            # Default to Opposition Research
+            self.run_opposition_research()
+    
+    def run_opposition_research(self):
+        """Run the original opposition research page"""
         if not self.teams:
             st.error("No team data available!")
             return
-        
-        # Header in its own container (full width)
-        with st.container():
-            self.render_header()
         
         # Main content in Streamlit's default container (with margins)
         with st.container():
@@ -904,8 +1093,58 @@ class FootballDashboard:
                         xg_color = self.get_percentile_color(xg_percentile)
                         oppo_xg_color = self.get_percentile_color(oppo_xg_percentile)
                         
-                        # Create two columns for the stats boxes
-                        stat_col1, stat_col2 = st.columns(2)
+                        # Create three columns for the stats boxes
+                        stat_col1, stat_col2, stat_col3 = st.columns(3)
+                        
+                        # Calculate xG difference and get league rank for it
+                        xpts_value = team_data['stats']['xG']['value'] - team_data['stats']['Oppo xG']['value']
+                        
+                        # Calculate xG difference for all teams to get proper ranking
+                        xg_diff_values = []
+                        for team in self.data['teams']:
+                            if 'xG' in team['stats'] and 'Oppo xG' in team['stats']:
+                                team_xg_diff = team['stats']['xG']['value'] - team['stats']['Oppo xG']['value']
+                                xg_diff_values.append((team_xg_diff, team['team']))
+                        
+                        # Sort by xG difference (descending - higher is better)
+                        xg_diff_values.sort(key=lambda x: x[0], reverse=True)
+                        
+                        # Find rank for selected team
+                        xg_diff_rank = 1
+                        for rank, (value, team_name_in_list) in enumerate(xg_diff_values, 1):
+                            if team_name_in_list == selected_team:
+                                xg_diff_rank = rank
+                                break
+                        
+                        # Determine zone based on rank position
+                        if xg_diff_rank <= 2:
+                            zone_text = "Promotion"
+                            zone_color = "#32CD32"  # Green
+                        elif xg_diff_rank <= 6:
+                            zone_text = "Play Off"
+                            zone_color = "#FFD700"  # Gold
+                        elif xg_diff_rank <= 11:
+                            zone_text = "Top Half"
+                            zone_color = "#87CEEB"  # Light blue
+                        elif xg_diff_rank <= 17:
+                            zone_text = "Mid Table"
+                            zone_color = "#FFA500"  # Orange
+                        elif xg_diff_rank <= 20:
+                            zone_text = "Relegation Threatened"
+                            zone_color = "#FF6347"  # Tomato
+                        else:
+                            zone_text = "Relegation"
+                            zone_color = "#DC143C"  # Red
+                        
+                        # Color based on rank
+                        if xg_diff_rank <= 6:
+                            xpos_color = "#32CD32"  # Green for top positions
+                        elif xg_diff_rank <= 11:
+                            xpos_color = "#FFD700"  # Gold for good positions
+                        elif xg_diff_rank <= 17:
+                            xpos_color = "#FFA500"  # Orange for mid table
+                        else:
+                            xpos_color = "#DC143C"  # Red for poor positions
                         
                         with stat_col1:
                             st.markdown(f'''
@@ -974,6 +1213,41 @@ class FootballDashboard:
                                     color: rgba(255, 255, 255, 0.9);
                                     font-weight: 600;
                                 ">{team_data['stats']['Oppo xG']['value']:.2f}</div>
+                            </div>
+                            ''', unsafe_allow_html=True)
+                        
+                        with stat_col3:
+                            st.markdown(f'''
+                            <div style="
+                                background: linear-gradient(135deg, rgba(20, 25, 40, 0.95) 0%, rgba(10, 15, 30, 0.98) 100%);
+                                border-radius: 15px;
+                                padding: 0.8rem 0.6rem;
+                                text-align: center;
+                                border: 1px solid rgba(255, 255, 255, 0.15);
+                                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                                backdrop-filter: blur(10px);
+                                transition: transform 0.2s ease;
+                            ">
+                                <div style="
+                                    font-size: 0.8rem;
+                                    font-weight: 500;
+                                    color: rgba(255, 255, 255, 0.8);
+                                    margin-bottom: 0.4rem;
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.5px;
+                                ">xPOSITION</div>
+                                <div style="
+                                    font-size: 1.6rem;
+                                    color: {xpos_color};
+                                    font-weight: 800;
+                                    margin-bottom: 0.2rem;
+                                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                                ">{xg_diff_rank}{self.get_ordinal_suffix(xg_diff_rank)}</div>
+                                <div style="
+                                    font-size: 0.8rem;
+                                    color: {zone_color};
+                                    font-weight: 600;
+                                ">{zone_text}</div>
                             </div>
                             ''', unsafe_allow_html=True)
             
