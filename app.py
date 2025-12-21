@@ -17,10 +17,10 @@ except ImportError:
 
 # Configure page
 st.set_page_config(
-    page_title="Latics Portal",
+    page_title="Latics Portal", 
     page_icon="⚽",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 # Check URL parameters for navigation
@@ -102,11 +102,24 @@ st.markdown("""
     
     /* Allow normal Streamlit container behavior */
     .main .block-container {
-        padding-top: 90px !important;
+        padding-top: 80px !important;
         padding-left: 1rem !important;
         padding-right: 1rem !important;
         max-width: 1600px !important;
         margin: 0 auto !important;
+    }
+    
+    /* Mobile-specific padding reduction */
+    @media (max-width: 768px) {
+        body {
+            padding-top: 20px !important;
+        }
+        
+        .main .block-container {
+            padding-top: 70px !important;
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+        }
     }
     
     /* Hide streamlit elements */
@@ -119,6 +132,26 @@ st.markdown("""
         background-color: rgba(255, 255, 255, 0.1);
         border: 1px solid rgba(139, 92, 246, 0.3);
         border-radius: 10px;
+    }
+    
+    /* Navigation button styling */
+    div[data-testid="column"] .stButton > button {
+        background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%) !important;
+        color: white !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        font-weight: 600 !important;
+        padding: 10px 16px !important;
+        font-size: 0.9rem !important;
+        border-radius: 8px !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3) !important;
+    }
+    
+    div[data-testid="column"] .stButton > button:hover {
+        background: linear-gradient(135deg, #9333EA 0%, #8B5CF6 100%) !important;
+        border: 1px solid rgba(255,255,255,0.4) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4) !important;
     }
     
     /* Header styling for full-width */
@@ -803,7 +836,7 @@ class FootballDashboard:
                 colorscale=[[0, '#DC143C'], [0.25, '#FF6B35'], [0.5, '#FFD700'], [0.75, '#90EE90'], [1.0, '#32CD32']],
                 cmin=0,
                 cmax=100,
-                line=dict(color='rgba(255,255,255,0.2)', width=1)
+                line=dict(color='rgba(1,1,1,1)', width=2)
             ),
             text=[f"{perc:.0f}" for perc in percentiles],
             textposition='outside',
@@ -837,142 +870,9 @@ class FootballDashboard:
     
 
     
-    def render_sidebar(self):
-        """Render the navigation sidebar"""
-        with st.sidebar:
-            # Sidebar styling
-            st.markdown("""
-            <style>
-            .stSidebar {
-                background: linear-gradient(135deg, #1758B1 0%, #134a8a 100%) !important;
-                width: 140px !important;
-                min-width: 140px !important;
-                max-width: 140px !important;
-            }
-            .stSidebar > div:first-child {
-                background: linear-gradient(135deg, #1758B1 0%, #134a8a 100%) !important;
-                width: 140px !important;
-                min-width: 140px !important;
-                max-width: 140px !important;
-                padding: 0.75rem !important;
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-            }
-            .stSidebar .element-container {
-                width: 100% !important;
-                display: flex !important;
-                justify-content: center !important;
-            }
-            .stButton {
-                width: 100% !important;
-                display: flex !important;
-                justify-content: center !important;
-            }
-            .stButton > button {
-                padding: 6px 8px !important;
-                margin: 3px 0 !important;
-                background: rgba(255,255,255,0.95) !important;
-                color: #1758B1 !important;
-                border: none !important;
-                border-radius: 4px !important;
-                font-size: 0.7rem !important;
-                font-weight: 500 !important;
-                cursor: pointer !important;
-                transition: all 0.3s ease !important;
-                box-shadow: 0 1px 4px rgba(0,0,0,0.1) !important;
-                white-space: nowrap !important;
-                width: 110px !important;
-                text-align: center !important;
-                height: 32px !important;
-                min-height: 32px !important;
-                max-height: 32px !important;
-                border: 1px solid transparent !important;
-                box-sizing: border-box !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            .stButton > button:hover {
-                background: rgba(255,255,255,1) !important;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.15) !important;
-                border: 1px solid rgba(255,255,255,0.5) !important;
-                transform: translateY(-1px) !important;
-                width: 110px !important;
-                height: 32px !important;
-                min-height: 32px !important;
-                max-height: 32px !important;
-            }
-            /* Mobile specific button sizing */
-            @media (max-width: 768px) {
-                .stButton > button {
-                    width: 110px !important;
-                    height: 32px !important;
-                    min-height: 32px !important;
-                    max-height: 32px !important;
-                    font-size: 0.7rem !important;
-                    padding: 6px 8px !important;
-                }
-                .stButton > button:hover {
-                    width: 110px !important;
-                    height: 32px !important;
-                    min-height: 32px !important;
-                    max-height: 32px !important;
-                }
-            }
-            .sidebar-logo {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 0.25rem;
-                background: rgba(255,255,255,0.1);
-                padding: 0.4rem;
-                border-radius: 6px;
-                backdrop-filter: blur(10px);
-                margin-bottom: 0.75rem;
-                flex-direction: column;
-            }
-            .sidebar-logo img {
-                height: 18px;
-                width: auto;
-            }
-            .sidebar-club-name {
-                color: white;
-                font-size: 0.6rem;
-                font-weight: 600;
-                text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-                margin: 0;
-                text-align: center;
-                line-height: 1.1;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-            
-            # Sidebar logo and title
-            logo_b64 = self.get_base64_image("wigan.png")
-            st.markdown(f"""
-            <div class="sidebar-logo">
-                {f'<img src="data:image/png;base64,{logo_b64}">' if logo_b64 else '<div style="font-size: 1.2rem;">⚽</div>'}
-                <div class="sidebar-club-name">LATICS PORTAL</div>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # Navigation buttons
-            if st.button("Opposition", key="sidebar_nav_opposition", use_container_width=True):
-                st.session_state.current_page = "Opposition Research"
-                st.rerun()
-                
-            if st.button("Recruitment", key="sidebar_nav_player", use_container_width=True):
-                st.session_state.current_page = "Player Recruitment"
-                st.rerun()
-                
-            if st.button("Game Review", key="sidebar_nav_analysis", use_container_width=True):
-                st.session_state.current_page = "Post-Match Analysis"
-                st.rerun()
-    
     def render_header(self):
-        """Render the header with logo and search bar only"""
-        # Header with full-width background
+        """Render the header with logo, search bar and centered navigation"""
+        # Header with logo and search bar
         st.markdown("""
         <div class='header-container'>
             <div class='header-nav' style='justify-content: center; gap: 2rem;'>
@@ -981,7 +881,7 @@ class FootballDashboard:
                     <div class='header-club-name'>LATICS PORTAL</div>
                 </div>
                 <div class='header-search' style='position: static; transform: none; width: 350px; max-width: none;'>
-                    <input type='text' placeholder='Search teams, players, stats...' />
+                    <input type='text' placeholder='Search teams, players (non functional)' />
                 </div>
             </div>
         </div>
@@ -989,6 +889,24 @@ class FootballDashboard:
             f'<img src="data:image/png;base64,{self.get_base64_image("wigan.png")}">' 
             if self.get_base64_image("wigan.png") else '<div style="font-size: 1.5rem; margin-right: 0.5rem;">⚽</div>'
         ), unsafe_allow_html=True)
+        
+        # Centered navigation buttons below header
+        col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
+        
+        with col2:
+            if st.button("🔍 Opposition Research", use_container_width=True, key="nav_opposition"):
+                st.session_state.current_page = "Opposition Research"
+                st.rerun()
+        
+        with col3:
+            if st.button("👥 Player Recruitment", use_container_width=True, key="nav_recruitment"):
+                st.session_state.current_page = "Player Recruitment"
+                st.rerun()
+        
+        with col4:
+            if st.button("📊 Post-Match Analysis (coming soon)", use_container_width=True, key="nav_analysis"):
+                st.session_state.current_page = "Post-Match Analysis"
+                st.rerun()
     def render_section(self, section_key, selected_team):
         """Render a stats section with bar chart"""
         section = self.sections[section_key]
@@ -1003,15 +921,7 @@ class FootballDashboard:
     
     def run(self):
         """Main dashboard runner with navigation"""
-        # Update session state with current page from URL
-        query_params = st.query_params
-        if 'page' in query_params:
-            st.session_state.current_page = query_params['page']
-        
-        # Render sidebar navigation
-        self.render_sidebar()
-        
-        # Header (always shown)
+        # Header with navigation (always shown)
         with st.container():
             self.render_header()
         

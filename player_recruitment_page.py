@@ -139,15 +139,38 @@ class PlayerRecruitmentPage:
             # Create colors based on percentile values using red-yellow-green-blue scale
             # Thresholds: 0-25 (red), 25-60 (yellow), 60-80 (green), 80-100 (wigan blue)
             def get_performance_color(value):
-                if value >= 80:
-                    return '#1758B1'  # Wigan header blue
-                elif value >= 60:
-                    return '#228B22'  # Green
-                elif value >= 25:
-                    return '#FFD700'  # Yellow
+                """Get color based on percentile using the exact colorscale from bar charts"""
+                # Colorscale: [[0, '#DC143C'], [0.25, '#FF6B35'], [0.5, '#FFD700'], [0.75, '#90EE90'], [1.0, '#32CD32']]
+                # Map 0-100 percentile to the exact gradient used in bar charts
+                
+                # Normalize value to 0-1 range for colorscale interpolation
+                normalized = value / 100.0
+                
+                if normalized <= 0.25:
+                    # Interpolate between '#DC143C' (dark red) and '#FF6B35' (orange-red)
+                    intensity = normalized / 0.25
+                    start_color = np.array([220, 20, 60])    # #DC143C
+                    end_color = np.array([255, 107, 53])     # #FF6B35
+                elif normalized <= 0.5:
+                    # Interpolate between '#FF6B35' (orange-red) and '#FFD700' (gold)
+                    intensity = (normalized - 0.25) / 0.25
+                    start_color = np.array([255, 107, 53])   # #FF6B35
+                    end_color = np.array([255, 215, 0])      # #FFD700
+                elif normalized <= 0.75:
+                    # Interpolate between '#FFD700' (gold) and '#90EE90' (light green)
+                    intensity = (normalized - 0.5) / 0.25
+                    start_color = np.array([255, 215, 0])    # #FFD700
+                    end_color = np.array([144, 238, 144])    # #90EE90
                 else:
-                    return '#DC143C'  # Red
-            
+                    # Interpolate between '#90EE90' (light green) and '#32CD32' (lime green)
+                    intensity = (normalized - 0.75) / 0.25
+                    start_color = np.array([144, 238, 144])  # #90EE90
+                    end_color = np.array([50, 205, 50])      # #32CD32
+                
+                # Linear interpolation between colors
+                color = start_color + (end_color - start_color) * intensity
+                return f"#{int(color[0]):02X}{int(color[1]):02X}{int(color[2]):02X}"
+
             # Create performance colors for slice values
             slice_colors = [get_performance_color(value) for value in formatted_values]
 
@@ -163,11 +186,11 @@ class PlayerRecruitmentPage:
             baker = PyPizza(
                 params=params,
                 background_color="#1a1a1a",  # Darker background
-                straight_line_color="#1a1a1a",
-                straight_line_lw=1,
-                last_circle_lw=0,
-                other_circle_lw=0,
-                inner_circle_size=5  # Much smaller inner circle
+                straight_line_color="#ffffff",
+                straight_line_lw=0,
+                last_circle_lw=5,
+                other_circle_lw=1,
+                inner_circle_size=0  # Much smaller inner circle
             )
 
             baker.make_pizza(
@@ -177,15 +200,13 @@ class PlayerRecruitmentPage:
                 slice_colors=slice_colors,  # Performance colors for slices
                 value_colors=["#FFFFFF"] * len(selected_columns),
                 value_bck_colors=["#1a1a1a"] * len(selected_columns),  # Match darker background
-                blank_alpha=0.9,  # Higher alpha for darker background
-                kwargs_slices=dict(edgecolor="#F2F2F2", zorder=2, linewidth=1),
-                kwargs_params=dict(color="#FFFFFF", fontsize=10.5, va="center"),
-                kwargs_values=dict(color="#FFFFFF", fontsize=11, zorder=3, 
+                blank_alpha=0.98,  # Higher alpha for darker background
+                kwargs_slices=dict(edgecolor="#000000", zorder=2, linewidth=2),
+                kwargs_params=dict(color="#FFFFFF", fontsize=12, va="center"),
+                kwargs_values=dict(color="#FFFFFF", fontsize=12, zorder=3, 
                                    bbox=dict(edgecolor="#FFFFFF", facecolor="#2b2b2b", 
-                                           boxstyle="round,pad=0.2", lw=1))
+                                           boxstyle="round,pad=0.2", lw=2))
             )
-
-            # NO TITLE OR SUBTITLE - removed for clean floating effect
             
             # Convert to base64 with main page background
             buf = io.BytesIO()
@@ -391,7 +412,7 @@ class PlayerRecruitmentPage:
                 <textarea style="width: 100%; height: 80px; background: rgba(255,255,255,0.05); 
                                 border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; 
                                 color: white; padding: 0.5rem; font-size: 0.9rem; resize: vertical;"
-                          placeholder="Technical ability, passing, dribbling, decision making..."></textarea>
+                          placeholder="..."></textarea>
             </div>
             """, unsafe_allow_html=True)
             
@@ -404,7 +425,7 @@ class PlayerRecruitmentPage:
                 <textarea style="width: 100%; height: 80px; background: rgba(255,255,255,0.05); 
                                 border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; 
                                 color: white; padding: 0.5rem; font-size: 0.9rem; resize: vertical;"
-                          placeholder="Pressing, tackling, defensive positioning, work rate..."></textarea>
+                          placeholder="..."></textarea>
             </div>
             """, unsafe_allow_html=True)
             
@@ -417,7 +438,7 @@ class PlayerRecruitmentPage:
                 <textarea style="width: 100%; height: 80px; background: rgba(255,255,255,0.05); 
                                 border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; 
                                 color: white; padding: 0.5rem; font-size: 0.9rem; resize: vertical;"
-                          placeholder="Overall assessment, strengths, weaknesses, potential..."></textarea>
+                          placeholder="..."></textarea>
             </div>
             """, unsafe_allow_html=True)
             
@@ -428,30 +449,42 @@ class PlayerRecruitmentPage:
     
     def run(self):
         """Main method to run the player recruitment page"""
-        # Add CSS for consistent styling
+        # Add CSS for consistent styling and mobile responsiveness
         st.markdown("""
         <style>
-            /* Button styling to match header */
-            .stButton > button {
-                background: rgba(255,255,255,0.95);
-                color: #1758B1;
-                border: none;
-                border-radius: 6px;
-                font-weight: 600;
-                padding: 8px 12px;
-                transition: all 0.3s ease;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                margin: 2px;
+            /* Navigation button styling - consistent with main page */
+            div[data-testid="column"] .stButton > button {
+                background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%) !important;
+                color: white !important;
+                border: 1px solid rgba(255,255,255,0.2) !important;
+                font-weight: 600 !important;
+                padding: 10px 16px !important;
+                font-size: 0.9rem !important;
+                border-radius: 8px !important;
+                transition: all 0.3s ease !important;
+                box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3) !important;
+                height: auto !important;
+                min-height: 40px !important;
             }
             
-            .stButton > button:hover {
-                background: rgba(255,255,255,1);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                border: 1px solid rgba(23, 88, 177, 0.3);
+            div[data-testid="column"] .stButton > button:hover {
+                background: linear-gradient(135deg, #9333EA 0%, #8B5CF6 100%) !important;
+                border: 1px solid rgba(255,255,255,0.4) !important;
+                transform: translateY(-2px) !important;
+                box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4) !important;
             }
             
-            /* Mobile padding between sections */
+            /* Consistent padding with main page */
+            .main .block-container {
+                padding-top: 80px !important;
+            }
+            
+            /* Mobile-specific padding reduction */
             @media (max-width: 768px) {
+                .main .block-container {
+                    padding-top: 70px !important;
+                }
+                
                 .stMarkdown > div {
                     margin-bottom: 1rem !important;
                 }
@@ -462,11 +495,6 @@ class PlayerRecruitmentPage:
                 
                 .element-container {
                     margin-bottom: 0.8rem !important;
-                }
-                
-                /* Reduce gap between header and first section on mobile */
-                .main .block-container {
-                    padding-top: 1rem !important;
                 }
             }
         </style>

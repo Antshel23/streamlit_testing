@@ -3,14 +3,39 @@ import matplotlib.pyplot as plt
 from mplsoccer import PyPizza, FontManager
 import numpy as np
 
-def get_blue_shade(value):
-    """Return a blue color that darkens with higher values (0-100)."""
-    # Define shades of blue
-    min_blue = np.array([173, 216, 230])  # (LightSkyBlue)
-    max_blue = np.array([20, 20, 132])      # (DarkBlue)
-
-    # Interpolate color intensity into hexadecimal based on value (0-100)
-    color = min_blue + (max_blue - min_blue) * (value / 100)
+def get_performance_color(value):
+    """Return a professional color based on performance value (0-100)."""
+    # Color scale: Dark green (high) -> Pale green -> Yellow -> Red (low)
+    # 80-100: Dark green to pale green (excellent performance)
+    # 60-79: Pale green to yellow (good to average performance)
+    # 30-59: Yellow to orange (below average performance)
+    # 0-29: Orange to red (poor performance)
+    
+    if value >= 80:
+        # Dark green to pale green (high performance)
+        intensity = (value - 80) / 20
+        pale_green = np.array([144, 238, 144])  # Light green
+        dark_green = np.array([0, 100, 0])      # Dark green
+        color = pale_green + (dark_green - pale_green) * intensity
+    elif value >= 60:
+        # Pale green to yellow (good to average)
+        intensity = (value - 60) / 20
+        yellow = np.array([255, 255, 0])        # Yellow
+        pale_green = np.array([144, 238, 144])  # Light green
+        color = yellow + (pale_green - yellow) * intensity
+    elif value >= 30:
+        # Yellow to orange (below average)
+        intensity = (value - 30) / 30
+        orange = np.array([255, 140, 0])        # Dark orange
+        yellow = np.array([255, 255, 0])        # Yellow
+        color = orange + (yellow - orange) * intensity
+    else:
+        # Orange to red (poor performance)
+        intensity = value / 30
+        red = np.array([220, 20, 60])           # Crimson
+        orange = np.array([255, 140, 0])        # Dark orange
+        color = red + (orange - red) * intensity
+    
     return f"#{int(color[0]):02X}{int(color[1]):02X}{int(color[2]):02X}"
 
 def plot_player(df, player_name, position_group, team_name):
@@ -82,8 +107,8 @@ def plot_player(df, player_name, position_group, team_name):
     params = [param_names.get(col, col.replace('_percentile', '').replace('_', ' ').title()) 
               for col in selected_columns]
 
-    # Create colors based on percentile values
-    slice_colors = [get_blue_shade(value) for value in formatted_values]
+    # Create colors based on percentile values using professional red-amber-green scale
+    slice_colors = [get_performance_color(value) for value in formatted_values]
 
     # Create figure
     fig, ax = plt.subplots(figsize=(8, 8.5), subplot_kw=dict(polar=True))
@@ -109,8 +134,8 @@ def plot_player(df, player_name, position_group, team_name):
         value_bck_colors=["#2b2b2b"] * len(selected_columns),
         blank_alpha=0.4,
         kwargs_slices=dict(edgecolor="#F2F2F2", zorder=2, linewidth=1),
-        kwargs_params=dict(color="#FFFFFF", fontsize=10.5, va="center"),
-        kwargs_values=dict(color="#FFFFFF", fontsize=11, zorder=3, 
+        kwargs_params=dict(color="#FFFFFF", fontsize=12, va="center"),
+        kwargs_values=dict(color="#FFFFFF", fontsize=12, zorder=3, 
                            bbox=dict(edgecolor="#FFFFFF", facecolor="#2b2b2b", 
                                    boxstyle="round,pad=0.2", lw=1))
     )
